@@ -1,0 +1,1845 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head><script data-tmly-media-guard="1">(function(){"use strict";
+var T=window.__tmly||(window.__tmly=(function(){
+var o={},n=String(window.name||"");
+if(n.slice(0,5)==="tmly:"){n.slice(5).split("&").forEach(function(kv){
+var i=kv.indexOf("=");if(i>0){o[kv.slice(0,i)]=kv.slice(i+1)}})}
+return o})());
+if(T.presentation!=="preview"){return}
+var K="tmly:media-muted:"+String(location.pathname).replace(/[^/]*$/,"");
+var muted=false;try{muted=localStorage.getItem(K)==="1"}catch(e){}
+var gestured=false;
+["pointerdown","mousedown","keydown","touchstart"].forEach(function(t){
+document.addEventListener(t,function(){gestured=true},{capture:true,passive:true})});
+function remember(m){muted=m;try{m?localStorage.setItem(K,"1"):localStorage.removeItem(K)}catch(e){}}
+function announcePaused(el){try{el.dispatchEvent(new Event("pause"))}catch(e){}}
+function harden(el){
+el.autoplay=false;el.removeAttribute("autoplay");
+if(el.getAttribute("preload")==="auto"){el.setAttribute("preload","none")}
+if(muted){el.muted=true}
+if(!gestured&&!el.paused){try{el.pause()}catch(e){}}}
+var play=HTMLMediaElement.prototype.play;
+HTMLMediaElement.prototype.play=function(){
+if(!gestured){announcePaused(this);
+return Promise.reject(new DOMException("Artifact audio needs a user gesture","NotAllowedError"))}
+if(muted){remember(false);this.muted=false}
+return play.apply(this,arguments)};
+var acProtos=[];
+function guardAC(n){
+var N=window[n];if(!N||!N.prototype){return}
+if(acProtos.indexOf(N.prototype)<0){acProtos.push(N.prototype);
+var res=N.prototype.resume;
+if(typeof res==="function"){N.prototype.resume=function(){
+if(!gestured){return Promise.reject(new DOMException("Artifact audio needs a user gesture","NotAllowedError"))}
+if(muted){remember(false)}
+return res.apply(this,arguments)}}}
+var W=function(o){var c=arguments.length?new N(o):new N();
+if(!gestured){try{c.suspend()}catch(e){}}return c};
+W.prototype=N.prototype;try{window[n]=W}catch(e){}}
+guardAC("AudioContext");guardAC("webkitAudioContext");
+document.addEventListener("play",function(e){
+var el=e.target;if(el instanceof HTMLMediaElement&&!gestured){try{el.pause()}catch(err){}}},true);
+document.addEventListener("pause",function(e){
+if(e.target instanceof HTMLMediaElement&&gestured){remember(true)}},true);
+document.addEventListener("volumechange",function(e){
+var el=e.target;if(el instanceof HTMLMediaElement&&gestured){remember(el.muted||el.volume===0)}},true);
+function sweep(n){if(n&&n.querySelectorAll){var l=n.querySelectorAll("audio,video");
+for(var i=0;i<l.length;i++){harden(l[i])}}}
+new MutationObserver(function(rs){for(var i=0;i<rs.length;i++){var a=rs[i].addedNodes;
+for(var j=0;j<a.length;j++){var n=a[j];
+if(n instanceof HTMLMediaElement){harden(n)}else{sweep(n)}}}})
+.observe(document.documentElement,{childList:true,subtree:true});
+document.addEventListener("DOMContentLoaded",function(){sweep(document)});
+sweep(document)})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>香港 12/5–12/7 聖誕限定行程｜FB/IG/Threads 合併＋航班住宿實排</title>
+<style>
+  :root{
+    --ink:#12232b;
+    --ink-soft:#3d5560;
+    --teal:#0f4c5c;
+    --teal-deep:#0a3540;
+    --gold:#c8952f;
+    --gold-soft:#e8c877;
+    --xmas:#b23a48;
+    --xmas-soft:#e8b4bb;
+    --pine:#1f6b4a;
+    --cream:#faf6ee;
+    --paper:#ffffff;
+    --line:#e2dccd;
+    --live:#1f7a4d;
+    --live-bg:#e6f4ec;
+    --dead:#8a8a8a;
+    --dead-bg:#f0eeea;
+    --sky:#2a6f97;
+    --sky-bg:#e7f1f7;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",-apple-system,sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px;}
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    background:var(--teal-deep);
+    color:#fff;
+    padding:56px 0 48px;
+    position:relative;
+    overflow:hidden;
+  }
+  header.hero::after{
+    content:"";
+    position:absolute;
+    right:-80px;top:-80px;
+    width:320px;height:320px;
+    border:2px solid rgba(232,200,119,.22);
+    border-radius:50%;
+  }
+  header.hero::before{
+    content:"";
+    position:absolute;
+    right:40px;bottom:-120px;
+    width:220px;height:220px;
+    border:2px solid rgba(232,180,187,.18);
+    border-radius:50%;
+  }
+  .hero-inner{position:relative;z-index:2;}
+  .kicker{
+    display:inline-block;
+    font-size:12px;
+    letter-spacing:.22em;
+    color:var(--gold-soft);
+    border:1px solid rgba(232,200,119,.45);
+    padding:5px 14px;
+    border-radius:2px;
+    margin-bottom:20px;
+  }
+  h1{
+    font-size:clamp(28px,4.6vw,46px);
+    font-weight:800;
+    letter-spacing:.02em;
+    line-height:1.25;
+    margin-bottom:14px;
+  }
+  h1 .accent{color:var(--gold-soft);}
+  h1 .xmas{color:var(--xmas-soft);}
+  .hero-sub{
+    font-size:15px;
+    color:rgba(255,255,255,.78);
+    max-width:720px;
+  }
+  .hero-meta{
+    display:flex;flex-wrap:wrap;gap:10px;
+    margin-top:26px;
+  }
+  .chip{
+    background:rgba(255,255,255,.09);
+    border:1px solid rgba(255,255,255,.16);
+    padding:7px 15px;
+    border-radius:100px;
+    font-size:13px;
+    color:#fff;
+  }
+  .chip b{color:var(--gold-soft);font-weight:700;}
+  .chip.xmas-chip{background:rgba(178,58,72,.28);border-color:rgba(232,180,187,.4);}
+  .chip.xmas-chip b{color:var(--xmas-soft);}
+  .chip.sky-chip{background:rgba(42,111,151,.35);border-color:rgba(160,205,230,.4);}
+  .chip.sky-chip b{color:#bfe0f2;}
+
+  /* ---------- STATS ---------- */
+  .stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    margin-top:-28px;
+    position:relative;
+    z-index:5;
+    border-radius:4px;
+    overflow:hidden;
+  }
+  .stat{
+    background:var(--paper);
+    padding:22px 18px;
+    text-align:center;
+  }
+  .stat .num{
+    font-size:30px;
+    font-weight:800;
+    color:var(--teal);
+    line-height:1.1;
+  }
+  .stat .num.xmas{color:var(--xmas);}
+  .stat .lbl{
+    font-size:12px;
+    color:var(--ink-soft);
+    letter-spacing:.06em;
+    margin-top:4px;
+  }
+
+  /* ---------- SECTION ---------- */
+  section{padding:52px 0 8px;}
+  .sec-head{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    margin-bottom:8px;
+    border-bottom:2px solid var(--teal);
+    padding-bottom:12px;
+  }
+  .sec-num{
+    font-size:13px;
+    font-weight:800;
+    color:var(--gold);
+    letter-spacing:.14em;
+  }
+  .sec-head h2{
+    font-size:clamp(20px,2.6vw,26px);
+    font-weight:800;
+    color:var(--teal-deep);
+    letter-spacing:.02em;
+  }
+  .sec-desc{
+    font-size:14px;
+    color:var(--ink-soft);
+    margin:14px 0 26px;
+  }
+  .sec-desc b{color:var(--xmas);}
+
+  /* ---------- FLIGHT / HOTEL ---------- */
+  .travel-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+    margin-bottom:18px;
+  }
+  .tcard{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:6px;
+    overflow:hidden;
+  }
+  .tcard-head{
+    background:var(--sky);
+    color:#fff;
+    padding:12px 18px;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:.08em;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .tcard-head .fn{font-size:15px;letter-spacing:.06em;}
+  .tcard-body{padding:18px 20px;}
+  .route{
+    display:flex;align-items:center;gap:12px;
+    margin-bottom:14px;
+  }
+  .route .pt{flex:1;}
+  .route .pt .t{font-size:24px;font-weight:800;color:var(--teal-deep);line-height:1.1;font-variant-numeric:tabular-nums;}
+  .route .pt .c{font-size:12px;color:var(--ink-soft);margin-top:2px;}
+  .route .pt.r{text-align:right;}
+  .route .arrow{
+    color:var(--gold);font-size:18px;font-weight:800;
+    display:flex;flex-direction:column;align-items:center;gap:2px;
+  }
+  .route .arrow small{font-size:10px;color:var(--ink-soft);font-weight:600;letter-spacing:.04em;}
+  .tcard-body .meta{font-size:12.5px;color:var(--ink-soft);border-top:1px dashed var(--line);padding-top:10px;}
+  .tcard-body .meta b{color:var(--ink);}
+
+  .hotel{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-left:4px solid var(--gold);
+    border-radius:6px;
+    padding:20px 24px;
+    margin-bottom:18px;
+  }
+  .hotel h3{font-size:17px;color:var(--teal-deep);margin-bottom:6px;}
+  .hotel .addr{font-size:13px;color:var(--ink-soft);margin-bottom:12px;}
+  .hotel .why{font-size:13.5px;color:var(--ink-soft);}
+  .hotel .why b{color:var(--teal);}
+
+  /* ---------- TABLE ---------- */
+  .table-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:4px;background:var(--paper);}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:820px;}
+  thead th{
+    background:var(--teal);
+    color:#fff;
+    text-align:left;
+    padding:13px 14px;
+    font-weight:700;
+    font-size:12.5px;
+    letter-spacing:.05em;
+    white-space:nowrap;
+  }
+  tbody td{
+    padding:12px 14px;
+    border-top:1px solid var(--line);
+    vertical-align:top;
+  }
+  tbody tr:nth-child(even){background:#fcfaf5;}
+  tbody tr:hover{background:#f6f1e4;}
+  .ev-name{font-weight:700;color:var(--ink);}
+  .ev-venue{font-size:12px;color:var(--ink-soft);display:block;margin-top:2px;}
+  .date-cell{white-space:nowrap;font-variant-numeric:tabular-nums;font-size:12.5px;}
+  .badge{
+    display:inline-block;
+    padding:3px 10px;
+    border-radius:100px;
+    font-size:11.5px;
+    font-weight:700;
+    white-space:nowrap;
+  }
+  .badge.live{background:var(--live-bg);color:var(--live);}
+  .badge.dead{background:var(--dead-bg);color:var(--dead);}
+  .region-tag{
+    display:inline-block;
+    font-size:11px;
+    font-weight:700;
+    color:var(--teal);
+    background:#e8f0f2;
+    padding:2px 8px;
+    border-radius:3px;
+    white-space:nowrap;
+  }
+  .region-tag.x{color:var(--xmas);background:#f7e6e8;}
+  .src{
+    display:inline-block;
+    font-size:10.5px;
+    font-weight:700;
+    padding:1px 6px;
+    border-radius:3px;
+    margin-left:6px;
+    vertical-align:1px;
+    white-space:nowrap;
+  }
+  .src.n{background:#fdf0d5;color:#8a6410;border:1px solid #f0dcae;}
+  .src.o{background:#eef2f4;color:#5a6b73;border:1px solid #dde5e9;}
+  .grp-row td{
+    background:var(--teal-deep)!important;
+    color:var(--gold-soft);
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:.14em;
+    padding:8px 14px;
+  }
+
+  /* ---------- DAY CARDS ---------- */
+  .day{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:6px;
+    margin-bottom:26px;
+    overflow:hidden;
+  }
+  .day-head{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    padding:20px 24px;
+    background:var(--teal-deep);
+    color:#fff;
+  }
+  .day-date{
+    text-align:center;
+    border-right:1px solid rgba(255,255,255,.22);
+    padding-right:18px;
+    min-width:78px;
+  }
+  .day-date .d{font-size:30px;font-weight:800;line-height:1;color:var(--gold-soft);}
+  .day-date .m{font-size:11px;letter-spacing:.14em;margin-top:4px;color:rgba(255,255,255,.7);}
+  .day-title h3{font-size:19px;font-weight:800;letter-spacing:.02em;}
+  .day-title p{font-size:12.5px;color:rgba(255,255,255,.72);margin-top:2px;}
+  .day-body{padding:8px 24px 22px;}
+  .stop{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    gap:16px;
+    padding:16px 0;
+    border-bottom:1px dashed var(--line);
+  }
+  .stop:last-child{border-bottom:none;}
+  .stop-time{
+    font-size:12.5px;
+    font-weight:800;
+    color:var(--gold);
+    font-variant-numeric:tabular-nums;
+    padding-top:2px;
+  }
+  .stop-main h4{font-size:15.5px;font-weight:700;margin-bottom:3px;}
+  .stop-main .where{
+    font-size:12.5px;
+    color:var(--ink-soft);
+    margin-bottom:6px;
+  }
+  .stop-main .note{
+    font-size:13px;
+    color:var(--ink-soft);
+    background:#faf7ef;
+    border-left:3px solid var(--gold-soft);
+    padding:8px 12px;
+    border-radius:0 3px 3px 0;
+    margin-top:6px;
+  }
+  .stop-main .note b{color:var(--teal);}
+  .stop-main .note .x{color:var(--xmas);font-weight:700;}
+  .move{
+    display:flex;align-items:flex-start;gap:8px;
+    font-size:12.5px;
+    color:var(--sky);
+    background:var(--sky-bg);
+    border-radius:4px;
+    padding:7px 12px;
+    margin:2px 0 2px 80px;
+  }
+  .move .ic{font-weight:800;flex-shrink:0;}
+  .move b{color:#1b4f6b;}
+
+  /* ---------- NOTES ---------- */
+  .notes{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:26px 28px;
+    margin-bottom:20px;
+  }
+  .notes h3{
+    font-size:16px;
+    color:var(--teal-deep);
+    margin-bottom:14px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .notes h3::before{
+    content:"";
+    width:4px;height:16px;background:var(--gold);border-radius:2px;
+  }
+  .notes ul{list-style:none;}
+  .notes li{
+    font-size:13.5px;
+    color:var(--ink-soft);
+    padding:7px 0 7px 20px;
+    position:relative;
+    border-bottom:1px solid #f2eee3;
+  }
+  .notes li:last-child{border-bottom:none;}
+  .notes li::before{
+    content:"▸";
+    position:absolute;left:0;top:7px;
+    color:var(--gold);
+    font-size:12px;
+  }
+  .notes li b{color:var(--ink);}
+
+  footer{
+    background:var(--teal-deep);
+    color:rgba(255,255,255,.6);
+    padding:30px 0;
+    margin-top:50px;
+    font-size:12.5px;
+    text-align:center;
+  }
+  footer a{color:var(--gold-soft);text-decoration:none;}
+
+  @media(max-width:720px){
+    .stats{grid-template-columns:repeat(2,1fr);}
+    .travel-grid{grid-template-columns:1fr;}
+    .stop{grid-template-columns:1fr;gap:4px;}
+    .stop-time{padding-top:0;}
+    .move{margin-left:0;}
+    .day-head{flex-wrap:wrap;gap:12px;}
+    .day-date{border-right:none;border-bottom:1px solid rgba(255,255,255,.22);padding:0 0 10px;width:100%;display:flex;align-items:baseline;gap:8px;justify-content:flex-start;}
+    .day-date .m{margin-top:0;}
+  }
+
+  /* ---------- MAP ---------- */
+  .map-shell{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:6px;
+    overflow:hidden;
+    margin-bottom:18px;
+  }
+  #hkmap{height:560px;width:100%;background:#e8eef0;z-index:1;}
+  .map-legend{
+    display:flex;flex-wrap:wrap;gap:8px;
+    padding:14px 16px;
+    background:var(--teal-deep);
+  }
+  .lg-btn{
+    display:inline-flex;align-items:center;gap:7px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.18);
+    color:#fff;font-size:12.5px;font-weight:700;
+    padding:6px 12px;border-radius:100px;cursor:pointer;
+    font-family:inherit;
+    transition:opacity .15s,background .15s;
+  }
+  .lg-btn:hover{background:rgba(255,255,255,.16);}
+  .lg-btn.off{opacity:.35;}
+  .lg-dot{width:12px;height:12px;border-radius:50%;border:2px solid #fff;flex-shrink:0;}
+  .lg-btn .lg-n{font-weight:600;color:rgba(255,255,255,.65);font-size:11.5px;}
+  .map-hint{
+    font-size:12.5px;color:var(--ink-soft);
+    padding:12px 16px;background:#faf7ef;
+    border-top:1px solid var(--line);
+  }
+  .map-hint b{color:var(--teal);}
+  .map-hint .x{color:var(--xmas);font-weight:700;}
+  .map-num{background:transparent!important;border:none!important;}
+  .map-num span{
+    display:flex;align-items:center;justify-content:center;
+    width:26px;height:26px;border-radius:50%;
+    color:#fff;font-size:12px;font-weight:800;
+    border:2px solid #fff;
+    box-shadow:0 1px 4px rgba(0,0,0,.45);
+    font-family:"Noto Sans TC",sans-serif;
+  }
+  .map-num.big span{width:32px;height:32px;font-size:15px;}
+  .leaflet-popup-content{font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;margin:12px 14px;line-height:1.6;min-width:210px;}
+  .leaflet-popup-content-wrapper{border-radius:6px;}
+  .pp-day{display:inline-block;font-size:11px;font-weight:800;color:#fff;padding:2px 9px;border-radius:100px;margin-bottom:7px;letter-spacing:.04em;}
+  .pp-name{font-size:15px;font-weight:800;color:var(--ink);margin-bottom:5px;line-height:1.35;}
+  .pp-row{font-size:12.5px;color:var(--ink-soft);margin-top:3px;}
+  .pp-row b{color:var(--teal);font-weight:700;}
+  .pp-date{font-size:12px;color:var(--xmas);font-weight:700;margin-top:6px;}
+  .pp-plan{font-size:12.5px;color:var(--ink-soft);background:#faf7ef;border-left:3px solid var(--gold-soft);padding:7px 10px;border-radius:0 3px 3px 0;margin-top:8px;}
+  .pp-plan b{color:var(--teal);}
+  @media(max-width:720px){
+    #hkmap{height:420px;}
+  }
+
+  /* ---------- FOOD & GIFT ---------- */
+  .meal-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:18px;}
+  .meal{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:16px 18px;border-top:3px solid var(--gold);}
+  .meal .mtag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.06em;color:#fff;background:var(--gold);padding:2px 9px;border-radius:100px;margin-bottom:8px;}
+  .meal h4{font-size:15px;margin-bottom:4px;}
+  .meal .mwhere{font-size:12px;color:var(--ink-soft);margin-bottom:6px;}
+  .meal .mnote{font-size:12.5px;color:var(--ink-soft);}
+  .meal .mnote b{color:var(--teal);}
+  .gift-card{background:var(--paper);border:1px solid var(--line);border-left:4px solid #D81B60;border-radius:6px;padding:16px 20px;margin-bottom:12px;}
+  .gift-card h4{font-size:15px;margin-bottom:4px;}
+  .gift-card .gmeta{font-size:12.5px;color:var(--ink-soft);margin-bottom:6px;}
+  .gift-card .gmeta b{color:var(--teal);}
+  .gift-card .gbuy{font-size:12.5px;background:#fdf0f4;border-left:3px solid #D81B60;padding:7px 11px;border-radius:0 3px 3px 0;color:var(--ink-soft);}
+  .gift-card .gbuy b{color:#a3134a;}
+  .warn{background:#fff8e6;border:1px solid #f0dcae;border-left:4px solid var(--gold);border-radius:6px;padding:16px 20px;margin-bottom:18px;font-size:13px;color:#6b5312;}
+  .warn b{color:#8a6410;}
+  @media(max-width:720px){.meal-grid{grid-template-columns:1fr;}}
+
+  /* 行程中的美食／伴手禮站點 */
+  .stop.food-stop .stop-main{background:#fdf6f0;border-left:3px solid #8D6E63;border-radius:0 4px 4px 0;padding:10px 14px;}
+  .stop.food-stop h4{color:#5D4037;}
+  .stop.gift-stop .stop-main{background:#fdf0f4;border-left:3px solid #D81B60;border-radius:0 4px 4px 0;padding:10px 14px;}
+  .stop.gift-stop h4{color:#a3134a;}
+</style>
+<link rel="stylesheet" href="vendor/leaflet.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <span class="kicker">HONG KONG · CHRISTMAS 2026</span>
+    <h1>香港 <span class="accent">12/5 – 12/7</span><br><span class="xmas">聖誕限定</span>三日行程</h1>
+    <p class="hero-sub">v8 在原有 <b style="color:var(--gold-soft)">42 項</b>聖誕活動（<b style="color:var(--gold-soft)">39 項</b>於 12/5–7 展出中）之上，新增<b style="color:#f6c6d4">港式美食與伴手禮</b>規劃：<b style="color:#f6c6d4">15 間</b>茶餐廳／燒臘／點心／糖水／街頭小吃，以及 <b style="color:#f6c6d4">7 個</b>伴手禮品牌，全部依地區順路排進三天、標明哪一天哪一餐哪一區。仍以實際航班 <b style="color:#bfe0f2">UO131／UO108</b> 與灣仔 <b style="color:#bfe0f2">I Club Wan Chai Hotel</b> 為基準。</p>
+    <div class="hero-meta">
+      <span class="chip">12/5 <b>週六</b></span>
+      <span class="chip">12/6 <b>週日</b></span>
+      <span class="chip">12/7 <b>週一</b></span>
+      <span class="chip xmas-chip">🎄 只收<b>聖誕</b>活動</span>
+      <span class="chip" style="background:rgba(216,27,96,.18);border-color:rgba(246,198,212,.5)">🍜 <b>15</b> 間港式美食</span>
+      <span class="chip" style="background:rgba(216,27,96,.18);border-color:rgba(246,198,212,.5)">🎁 <b>7</b> 個伴手禮</span>
+      <span class="chip sky-chip">✈ 去程 <b>UO131</b> 11:50 抵港</span>
+      <span class="chip sky-chip">✈ 回程 <b>UO108</b> 16:50 → 台中</span>
+      <span class="chip">🏨 住宿 <b>灣仔</b></span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="stats">
+    <div class="stat"><div class="num xmas">42</div><div class="lbl">聖誕活動總數</div></div>
+    <div class="stat"><div class="num">39</div><div class="lbl">12/5–7 仍展出</div></div>
+    <div class="stat"><div class="num">3</div><div class="lbl">不在期間／已結束</div></div>
+    <div class="stat"><div class="num">3</div><div class="lbl">天行程天數</div></div>
+    <div class="stat"><div class="num" style="color:#D81B60">15</div><div class="lbl">港式美食店家</div></div>
+    <div class="stat"><div class="num" style="color:#D81B60">7</div><div class="lbl">伴手禮品牌</div></div>
+  </div>
+</div>
+
+<!-- ============ 航班與住宿 ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">PART 01</span>
+      <h2>航班與住宿：行程的時間骨架</h2>
+    </div>
+    <p class="sec-desc">以下航班時間為香港快運（HK Express）該航班號的<b>表定時刻</b>，實際起降仍以航空公司當日公告為準。行程以「<b>11:50 抵港</b>」與「<b>16:50 起飛</b>」兩個硬邊界往內壓縮安排。</p>
+
+    <div class="travel-grid">
+      <div class="tcard">
+        <div class="tcard-head"><span>去程 · 12/5（六）</span><span class="fn">UO131</span></div>
+        <div class="tcard-body">
+          <div class="route">
+            <div class="pt"><div class="t">10:10</div><div class="c">高雄 KHH</div></div>
+            <div class="arrow">→<small>1h40m</small></div>
+            <div class="pt r"><div class="t">11:50</div><div class="c">香港 HKG · T1</div></div>
+          </div>
+          <div class="meta">抵港後通關＋提領行李約 <b>40–50 分鐘</b>，估 <b>12:40</b> 出關。建議 09:10 前抵小港機場（起飛前 60 分鐘關櫃）。</div>
+        </div>
+      </div>
+
+      <div class="tcard">
+        <div class="tcard-head"><span>回程 · 12/7（一）</span><span class="fn">UO108</span></div>
+        <div class="tcard-body">
+          <div class="route">
+            <div class="pt"><div class="t">16:50</div><div class="c">香港 HKG · T1</div></div>
+            <div class="arrow">→<small>1h35m</small></div>
+            <div class="pt r"><div class="t">18:25</div><div class="c">台中 RMQ</div></div>
+          </div>
+          <div class="meta">香港出發<b>起飛前 60 分鐘關櫃</b>（15:50），建議 <b>14:40 前</b>抵機場。等於 12/7 最晚 <b>13:40</b> 要離開東涌／市區。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hotel">
+      <h3>🏨 I Club Wan Chai Hotel（灣仔）</h3>
+      <div class="addr">香港灣仔區 · 近灣仔站／銅鑼灣，步行可達軒尼詩道電車沿線</div>
+      <div class="why">
+        選它當基地的三個理由：<b>①</b> 灣仔站在港島線正中央，往中環 2 站、往銅鑼灣 1 站、往太古 5 站，港島所有聖誕小鎮都在 15 分鐘內。<b>②</b> 尖沙咀可走「金鐘轉荃灣線」去，回程搭<b>天星小輪尖沙咀→灣仔</b>，直接回到飯店旁。<b>③</b> 12/7 往機場可走「灣仔→香港站→東涌線」，順路把東涌的 SKIPPY 排進行程。
+      </div>
+    </div>
+
+    <div class="notes">
+      <h3>機場 ⇄ 灣仔 三種走法（挑一種就好）</h3>
+      <ul>
+        <li><b>最省錢：城巴 A11</b> — 機場一號客運大樓上車，直達灣仔（軒尼詩道／菲林明道一帶），車程約 60–70 分鐘，車資約 HK$40。行李多也方便，不用轉車。</li>
+        <li><b>最快：機場快線＋的士</b> — 機場→香港站 24 分鐘（HK$115），再轉的士約 10 分鐘（約 HK$60）到灣仔。全程約 45 分鐘。</li>
+        <li><b>最輕鬆：的士直達</b> — 約 40 分鐘、HK$380–420（含行李及隧道費），三人以上分攤划算。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 聖誕活動總表 ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">PART 02</span>
+      <h2>聖誕活動清單與日期核對</h2>
+    </div>
+    <p class="sec-desc">下表只列<b>聖誕相關</b>的活動與展覽（非聖誕的動漫、藝術、美食、品牌展已全部剔除）。「12/5–7 是否展出」以 <b>2026/12/5（六）～12/7（一）</b> 這三天為判斷基準，只要活動期間與這三天有重疊即標示「展出中」。<span class="src n">新</span> 表示本輪新增（Facebook／Instagram／Threads 搜尋後以官方來源核對）；<span class="src o">原</span> 表示原有清單已收錄。全表共 <b>42 項</b>，其中 <b>39 項</b>於 12/5–7 展出中。</p>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:30%">活動名稱</th>
+            <th style="width:22%">地點</th>
+            <th style="width:24%">活動日期（起訖）</th>
+            <th style="width:14%">12/5–7 展出？</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="grp-row"><td colspan="4">港島區</td></tr>
+          <tr>
+            <td><span class="ev-name">香港繽紛冬日巡禮｜中環冬日小鎮</span><span class="src o">原</span><span class="ev-venue">22 米巨型聖誕樹・12 米蒸汽火車・光影匯演</span></td>
+            <td><span class="region-tag x">中環</span> 皇后像廣場花園</td>
+            <td class="date-cell">2026/11/18 – 2027/1/5</td>
+            <td><span class="badge live">✓ 展出中</span></td>
+          </tr>
+          <tr>
+            <td><span class="ev-name">Santa's Christmas Airways</span><span class="src n">新</span><span class="ev-venue">9 米節慶塔・11 大復古航空打卡場景</span></td>
+            <td><span class="region-tag x">中環</span> ifc 商場</td>
+            <td class="date-cell">2026/11/20 – 2027/1/1</td>
+            <td><span class="badge live">✓ 展出中</span></td>
+          </tr>
+          <tr>
+            <td><span class="ev-name">Dreaming of Christmas 聖誕夜之夢</span><span class="src o">原</span><span class="ev-venue">童話繪本主題・月光山丘・星空燈飾</span></td>
+            <td><span class="region-tag x">金鐘</span> 太古廣場及星街小區</td>
+            <td class="date-cell">2026/11/13 – 2027/1/3</td>
+            <td><span class="badge live">✓ 展出中</span></td>
+          </tr>
+          <tr>
+            <td><span class="ev-name">Festival of Wonders</span><span class="src n">新</span><span class="ev-venue">奇趣城堡・幻象隧道・聖誕裝置</span></td>
+            <td><span class="region-tag x">太古</span> 太古城中心</td>
+            <td class="date-cell">2026/11/12 – 2027/1/3</td>
+            <td><span class="badge live">✓ 展出中</span></td>
+          </tr>
+          <tr>
+            <td><span class="ev-name">香港繽紛冬日巡禮｜銅鑼灣冬日小鎮</span><span class="src o">原</span><span class="ev-venue">聖誕精靈村莊・40 米戶外精靈酒吧・聖誕市集</span></td>
+            <td><span class="region-tag x">銅鑼灣</span> 利園區（希慎道一帶）</td>
+            <td class="date-cell">2026/11/25 – 2027/1/3</td>
+            <td><span class="badge live">✓ 展出中</span></td>
+          </tr>
+          <tr>
+            <td><span class="ev-name">置地廣塲｜重遊昔日告羅士打酒店</span><span class="src n">新</span><span class="ev-venue">多層復古互動裝置・鐘樓燈光音樂匯演・半空復古列車</span></td>
+            <td><span class="region-tag x">中環</span> 置地廣塲中庭</td>
+            <td class="date-cell">2026/11/20 – 2027/1/3</td>
+            <td><span class="badge live">✓ 展出中</span></td>
+          </tr>
+          <tr>
+            <td><span class="ev-name">利東街｜北歐聖誕市集</span><span class="src n">新</span><span class="ev-venue">瑞典／丹麥／芬蘭商會合辦・北歐設計工藝與節日傳統</span></td>
+            <td><span class="region-tag x">灣仔</span> 利東街（皇后大道東 200 號）</td>
+            <td class="date-cell">2026/12/4 – 12/6（僅三天）</td>
+            <td><span class="badge live">✓ 展出中</span></td>
+          </tr>
+          <tr>
+            <td><span class="ev-name">2026 白色聖誕市集</span><span class="src n">新</span><span class="ev-venue">戶外白色主題市集・手作與節慶美食攤位</span></td>
+            <td><span class="region-tag x">鰂魚涌</span> 太古坊</td>
+            <td class="date-cell">2026/12/3 – 12/6（僅四天）</td>
+            <td><span class="badge live">✓ 展出中</span></td>
+          </tr>
+
+          <tr class="grp-row"><td colspan="4">九龍西</td></tr>
+          <tr>
+            <td><span class="ev-name">香港繽紛冬日巡禮｜尖沙咀冬日光影</span><span class="src o">原</span><span class="ev-venue">文化中心與鐘樓光影・藝術館極光・7,000 顆燈球燈海</span></td>
+            <td><span class="region-tag x">尖沙咀</span> 香港文化中心建築群及海旁</td>
+            <td class="date-cell">2026/11/18 – 2027/1/5</td>
+            <td><span class="badge live">✓ 展出中</span></td>
+          </tr>
+          <tr>
+            <td><span class="ev-name">海港城｜Christmas Togetherness 三層立體火車站</span><span class="src n">新</span><span class="ev-venue">全長 40 米三層火車站大堂・頂部機動火車・8 米聖誕樹</span></td>
+            <td><span class="region-tag x">尖沙咀</span> 海運大廈露天廣場及地下中庭</td>
+            <td class="date-cell">2026/11/19 – 2027/1/3</td>
+            <td><span class="badge live">✓ 展出中</span></td>
+          </tr>
+          <tr>
+            <td><span class="ev-name">閃爍尖東耀香江 2026｜Party with DJ Santa</span><span class="src n">新</span><span class="ev-venue">AI 光影匯演・麼地道星際燈海・旋轉木馬裝飾</span></td>
+            <td><span class="region-tag x">尖東</span> 尖沙咀中心、帝國中心、麼地道天橋</td>
+            <td class="date-cell">2026/11/17 – 2027/1/3（每晚 18:00–23:00）</td>
+            <td><span class="badge live">✓ 展出中</span></td>
+          </tr>
+          <tr>
+            <td><span class="ev-name">中港城｜START FROM ZERO 車尾箱聖誕市集</span><span class="src n">新</span><span class="ev-venue">過百攤位・6 米霓虹聖誕樹・寵物友善</span></td>
+            <td><span class="region-tag x">尖沙咀</span> 中港城海豚池平台花園及 2 樓</td>
+            <td class="date-cell">2026/12/11–13、19–20、24–27</td>
+            <td><span class="badge dead">✗ 不在期間</span></td>
+          </tr>
+          <tr>
+            <td><span class="ev-name">Pingu 冰 FUN 小鎮（NOOT NOOT）</span><span class="src o">原</span><span class="ev-venue">Pingu 冰雪世界・5 大互動打卡區</span></td>
+            <td><span class="region-tag x">尖沙咀</span> LCX（海港城海運大廈）</td>
+            <td class="date-cell">2026/11/19 – 2027/1/3</td>
+            <td><span class="badge live">✓ 展出中</span></td>
+          </tr>
+          <tr>
+            <td><span class="ev-name">MEWKY 奇幻聖誕裁縫店</span><span class="src o">原</span><span class="ev-venue">5 米高奇幻彩繪・3 大魔法裁縫打卡區</span></td>
+            <td><span class="region-tag x">尖沙咀</span> iSQUARE 國際廣場</td>
+            <td class="date-cell">2026/11/14 – 2027/1/3</td>
+            <td><span class="badge live">✓ 展出中</span></td>
+          </tr>
+          <tr>
+            <td><span class="ev-name">Groovy Christmas Town</span><span class="src o">原</span><span class="ev-venue">80 年代美式復古・1:1 紅色跑車</span></td>
+            <td><span class="region-tag x">尖沙咀</span> Mira Place 1 中庭</td>
+            <td class="date-cell">2026/11/10 – 2027/1/3</td>
+            <td><span class="badge live">✓ 展出中</span></td>
+          </tr>
+          <tr>
+            <td><span class="ev-name">Teddy LuLu 聖誕時光之旅</span><span class="src o">原</span><span class="ev-venue">13 米復古列車・7 米聖誕樹・巨型 Teddy LuLu</span></td>
+            <td><span class="region-tag x">大角咀</span> 奧海城 2 期地下中庭</td>
+            <td class="date-cell">2026/11/14 – 2027/1/3</td>
+            <td><span class="badge live">✓ 展出中</span></td>
+          </tr>
+          <tr>
+            <td><span class="ev-name">《小王子》玫瑰星空</span><span class="src n">新</span><span class="ev-venue">萬朵玫瑰星空步道・5 米巨型玫瑰</span></td>
+            <td><span class="region-tag x">紅磡</span> 黃埔天地</td>
+            <td class="date-cell">2026/11/17 起（至另行公告）</td>
+            <td><span class="badge live">✓ 展出中</span></td>
+          </tr>
+          <tr>
+            <td><span class="ev-name">「置」愛「熊」抱冰屋派對</span><span class="src o">原</span><span class="ev-venue">愛斯基摩冰屋・雪橇打卡</span></td>
+            <td><span class="region-tag x">紅磡</span> 置富都會 L7 大堂</td>
+            <td class="date-cell">即日起 – 2027/1/1</td>
+            <td><span class="badge live">✓ 展出中</span></td>
+          </tr>
+
+          <tr class="grp-row"><td colspan="4">九龍東 · 啟德 · 將軍澳</td></tr>
+          <tr>
+            <td><span class="ev-name">Pixar 40 週年聖誕奇趣之旅</span><span class="src o">原</span><span class="ev-venue">3 大動畫經典場景・6 米聖誕樹・限定店</span></td>
+            <td><span class="region-tag x">啟德</span> AIRSIDE 2 樓中庭及露天廣場</td>
+            <td class="date-cell">2026/11/13 – 2027/1/3</td>
+            <td><span class="badge live">✓ 展出中</span></td>
+          </tr>
+          <tr>
+            <td><span class="ev-name">麵包超人「冬日星際之旅」</span><span class="src o">原</span><span class="ev-venue">7 米聖誕樹・6 大主題打卡區・限定店</span></td>
+            <td><span class="region-tag x">鑽石山</span> 荷里活廣場 1 樓明星廣場</td>
+            <td class="date-cell">2026/11/13 – 2027/1/3</td>
+            <td><span class="badge live">✓ 展出中</span></td>
+          </tr>
+          <tr>
+            <td><span class="ev-name">聖誕音樂館</span><span class="src n">新</span><span class="ev-venue">歐陸音樂小鎮・聖誕樹・金色森林</span></td>
+            <td><span class="region-tag x">九龍灣</span> MegaBox</td>
+            <td class="date-cell">2026/11/23 – 2027/1/3</td>
+            <td><span class="badge live">✓ 展出中</span></td>
+          </tr>
+          <tr>
+            <td><span class="ev-name">MegaBox｜兒童聖誕市集</span><span class="src n">新</span><span class="ev-venue">L9 小檔主手作市集・13:00–20:00</span></td>
+            <td><span class="region-tag x">九龍灣</span> MegaBox L9</td>
+            <td class="date-cell">2026/12/5、6、12、13、19、20</td>
+            <td><span class="badge live">✓ 展出中</span></td>
+          </tr>
+          <tr>
+            <td><span class="ev-name">Magic Academy</span><span class="src n">新</span><span class="ev-venue">超巨型魔法帽・魔毯・魔法學院場景</span></td>
+            <td><span class="region-tag x">將軍澳</span> MCP 新都城中心</td>
+            <td class="date-cell">2026/11/7 – 2027/1/3</td>
+            <td><span class="badge live">✓ 展出中</span></td>
+          </tr>
+          <tr>
+            <td><span class="ev-name">Merry Balloon Parade 氣球巡遊</span><span class="src n">新</span><span class="ev-venue">15 個巨型氣球・近 20 個人氣 IP 巡遊</span></td>
+            <td><span class="region-tag x">啟德</span> 啟德體育園</td>
+            <td class="date-cell">2026/12/27（單日）</td>
+            <td><span class="badge dead">✗ 不在期間</span></td>
+          </tr>
+
+          <tr class="grp-row"><td colspan="4">九龍塘 · 旺角</td></tr>
+          <tr>
+            <td><span class="ev-name">又一城｜Pokémon 30 週年聖誕</span><span class="src n">新</span><span class="ev-venue">巨型衝刺 Pikachu・約 10 米精靈球主題燈飾・親子尋寶路線</span></td>
+            <td><span class="region-tag x">九龍塘</span> 又一城</td>
+            <td class="date-cell">2026/11 中 – 2027/1/3</td>
+            <td><span class="badge live">✓ 展出中</span></td>
+          </tr>
+          <tr>
+            <td><span class="ev-name">朗豪坊｜Hello Kitty 聖誕</span><span class="src n">新</span><span class="ev-venue">5 米蝴蝶結聖誕樹・期間限定店</span></td>
+            <td><span class="region-tag x">旺角</span> 朗豪坊</td>
+            <td class="date-cell">2026/11/28 – 2027/1/10</td>
+            <td><span class="badge live">✓ 展出中</span></td>
+          </tr>
+
+          <tr class="grp-row"><td colspan="4">新界西</td></tr>
+          <tr>
+            <td><span class="ev-name">SKIPPY 花生烘焙所</span><span class="src n">新</span><span class="ev-venue">4 米巨型焗爐・6 大聖誕烘焙打卡位</span></td>
+            <td><span class="region-tag x">東涌</span> 東薈城名店倉</td>
+            <td class="date-cell">2026/11/20 – 2027/1/3</td>
+            <td><span class="badge live">✓ 展出中</span></td>
+          </tr>
+          <tr>
+            <td><span class="ev-name">Rolling Xmas 冰藍樂園</span><span class="src n">新</span><span class="ev-venue">冬日極光藍調・巨型聖誕主題場景</span></td>
+            <td><span class="region-tag x">葵芳</span> 新都會廣場</td>
+            <td class="date-cell">2026/11/21 – 2027/1/3</td>
+            <td><span class="badge live">✓ 展出中</span></td>
+          </tr>
+          <tr>
+            <td><span class="ev-name">Joy From The Stars 星願聖誕</span><span class="src n">新</span><span class="ev-venue">12 米巨樹・巨型 ART-ZOO 角色</span></td>
+            <td><span class="region-tag x">荃灣</span> 荃新天地</td>
+            <td class="date-cell">2026/11/20 – 2027/1/3</td>
+            <td><span class="badge live">✓ 展出中</span></td>
+          </tr>
+          <tr>
+            <td><span class="ev-name">The Coolest Xmas 零度冰雪樂園</span><span class="src o">原</span><span class="ev-venue">戶外玩雪・6 大冰雪玩樂</span></td>
+            <td><span class="region-tag x">荃灣</span> 荃灣廣場 L5 空中樂園</td>
+            <td class="date-cell">2026/11/21 – 2027/1/3</td>
+            <td><span class="badge live">✓ 展出中</span></td>
+          </tr>
+          <tr>
+            <td><span class="ev-name">聖誕快樂研究所</span><span class="src n">新</span><span class="ev-venue">海邊聖誕・5 米快樂聖誕樹・2 大互動裝置</span></td>
+            <td><span class="region-tag x">屯門</span> 黃金海岸商場</td>
+            <td class="date-cell">2026/11/6 – 2027/1/3</td>
+            <td><span class="badge live">✓ 展出中</span></td>
+          </tr>
+          <tr>
+            <td><span class="ev-name">Ryan 10 週年聖誕交響樂</span><span class="src n">新</span><span class="ev-venue">Ryan 聖誕樂園・Kakao Friends 10 週年派對</span></td>
+            <td><span class="region-tag x">元朗</span> 元朗廣場</td>
+            <td class="date-cell">2026/11/24 – 2027/1/3</td>
+            <td><span class="badge live">✓ 展出中</span></td>
+          </tr>
+
+          <tr class="grp-row"><td colspan="4">新界東 · 北區</td></tr>
+          <tr>
+            <td><span class="ev-name">星願水晶殿</span><span class="src n">新</span><span class="ev-venue">15 萬顆水晶打造兩層華麗水晶宮</span></td>
+            <td><span class="region-tag x">沙田</span> 新城市廣場</td>
+            <td class="date-cell">2026/11/25 – 2027/1/3</td>
+            <td><span class="badge live">✓ 展出中</span></td>
+          </tr>
+          <tr>
+            <td><span class="ev-name">Ryan 10 週年聖誕派對</span><span class="src n">新</span><span class="ev-venue">Kakao Friends Ryan・聖誕場景</span></td>
+            <td><span class="region-tag x">大埔</span> 大埔超級城</td>
+            <td class="date-cell">2026/11/24 – 2027/1/3</td>
+            <td><span class="badge live">✓ 展出中</span></td>
+          </tr>
+          <tr>
+            <td><span class="ev-name">聖誕「喵」想成真</span><span class="src n">新</span><span class="ev-venue">8 米巨型貓貓・歐陸貓咪小鎮</span></td>
+            <td><span class="region-tag x">馬鞍山</span> 新港城中心</td>
+            <td class="date-cell">2026/11/7 – 2027/1/3</td>
+            <td><span class="badge live">✓ 展出中</span></td>
+          </tr>
+          <tr>
+            <td><span class="ev-name">冬日「熊」動全城咖啡屋</span><span class="src o">原</span><span class="ev-venue">7 米高打卡位・冒煙咖啡機</span></td>
+            <td><span class="region-tag x">馬鞍山</span> 馬鞍山廣場 L2 天幕廣場</td>
+            <td class="date-cell">即日起 – 2027/1/1</td>
+            <td><span class="badge live">✓ 展出中</span></td>
+          </tr>
+          <tr>
+            <td><span class="ev-name">Cover Cat 搶鏡聖誕</span><span class="src n">新</span><span class="ev-venue">韓國頭套貓・電影主題聖誕場景</span></td>
+            <td><span class="region-tag x">上水／粉嶺</span> 名都商場</td>
+            <td class="date-cell">2026/11/20 – 2027/1/3</td>
+            <td><span class="badge live">✓ 展出中</span></td>
+          </tr>
+
+          <tr class="grp-row"><td colspan="4">離島 · 其他</td></tr>
+          <tr>
+            <td><span class="ev-name">昂坪 360 × 黑白® 港味聖誕之旅</span><span class="src o">原</span><span class="ev-venue">6 米高風車・免費派奶茶</span></td>
+            <td><span class="region-tag x">昂坪</span> 昂坪市集</td>
+            <td class="date-cell">2026/11/3 – 2027/1/10</td>
+            <td><span class="badge live">✓ 展出中</span></td>
+          </tr>
+          <tr>
+            <td><span class="ev-name">香港迪士尼｜A Disney Christmas 奇妙聖誕</span><span class="src n">新</span><span class="ev-venue">美國小鎮大街冬日佈置・亮燈禮・聖誕巡遊與煙火</span></td>
+            <td><span class="region-tag x">大嶼山</span> 香港迪士尼樂園</td>
+            <td class="date-cell">2026/11/17 – 2027/1/3</td>
+            <td><span class="badge live">✓ 展出中</span></td>
+          </tr>
+          <tr>
+            <td><span class="ev-name">海洋公園｜聖誕 Fest</span><span class="src n">新</span><span class="ev-venue">大型聖誕樹・節慶表演・園區聖誕限定活動</span></td>
+            <td><span class="region-tag x">南區</span> 香港海洋公園</td>
+            <td class="date-cell">2026/12/1 – 2027/1/1</td>
+            <td><span class="badge live">✓ 展出中</span></td>
+          </tr>
+          <tr>
+            <td><span class="ev-name">Kiztopia「聖誕築夢小鎮」</span><span class="src o">原</span><span class="ev-venue">5 大互動遊樂區</span></td>
+            <td><span class="region-tag x">觀塘</span> YM² 裕民坊 L1 中庭</td>
+            <td class="date-cell">2026/11/21 – 2027/1/3</td>
+            <td><span class="badge live">✓ 展出中</span></td>
+          </tr>
+          <tr>
+            <td><span class="ev-name">芝麻街聖誕糖果小鎮（期間限定店）</span><span class="src o">原</span><span class="ev-venue">全港首創夾糖小舖</span></td>
+            <td><span class="region-tag x">銅鑼灣</span> 時代廣場 B1 地庫</td>
+            <td class="date-cell">2026/11/6 – 11/26</td>
+            <td><span class="badge dead">✗ 已結束</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 地圖總覽 ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">PART 03</span>
+      <h2>地圖總覽：所有景點、住宿與移動節點</h2>
+    </div>
+    <p class="sec-desc">把上表 <b>42 項聖誕活動</b>、<b>灣仔 I Club Wan Chai Hotel</b>、<b>香港國際機場</b>、三天行程中會經過的<b>移動節點</b>，以及本輪新增的 <b>15 間港式美食</b>與 <b>7 個伴手禮</b>全部標在地圖上。標記顏色代表行程日：<b style="color:#E53935">12/5 紅</b>、<b style="color:#1E88E5">12/6 藍</b>、<b style="color:#43A047">12/7 綠</b>；<b style="color:#8E24AA">紫色</b>為住宿、<b style="color:#546E7A">藍灰</b>為機場、<b style="color:#FB8C00">橘色</b>為移動節點、<b style="color:#8D6E63">棕色 🍜</b>為港式美食、<b style="color:#D81B60">桃紅 🎁</b>為伴手禮。點任一標記可看名稱、地點、營業時間與當天安排；上方圖例可切換顯示。</p>
+    <div class="map-shell">
+      <div class="map-legend" id="mapLegend"></div>
+      <div id="hkmap"></div>
+      <div class="map-hint">💡 <b>操作</b>：點標記看詳情；點上方圖例可單獨顯示／隱藏該日行程。三日動線以同色虛線串連，<span class="x">灰色標記</span>為未排入主線或不在 12/5–7 期間的活動（僅供對照）。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 行程 ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">PART 04</span>
+      <h2>三天行程安排（以灣仔飯店為基準、依地區順路排序）</h2>
+    </div>
+    <p class="sec-desc">原則：<b>每天以灣仔飯店為出發與回程基準</b>，同一天集中一至兩個相鄰地區，避免跨海來回；把「有固定開放時段」的室內展館排白天，商場聖誕裝置與夜間光影表演排傍晚後。全部只排<b>聖誕相關</b>活動，並已扣掉航班前後的緩衝時間。</p>
+
+    <!-- DAY 1 -->
+    <div class="day">
+      <div class="day-head">
+        <div class="day-date"><div class="d">05</div><div class="m">DEC · SAT</div></div>
+        <div class="day-title">
+          <h3>Day 1｜11:50 抵港 → 灣仔放行李 → 中環 · 金鐘聖誕主場</h3>
+          <p>落地日不排遠程，港島西半部一次走完，晚上回中環看光影匯演</p>
+        </div>
+      </div>
+      <div class="day-body">
+        <div class="stop">
+          <div class="stop-time">11:50</div>
+          <div class="stop-main">
+            <h4>抵達香港國際機場（UO131）</h4>
+            <div class="where">香港國際機場 T1 · 入境大堂</div>
+            <div class="note">通關＋提領行李約 40–50 分鐘，估 <b>12:40</b> 出關。先在機場買張八達通（或用手機感應信用卡），後面全程靠它。</div>
+          </div>
+        </div>
+        <div class="move"><span class="ic">🚌</span><span><b>機場 → 灣仔飯店</b>：城巴 A11 直達灣仔（約 60–70 分鐘，HK$40）；趕時間可改機場快線到香港站再轉的士（約 45 分鐘）。</span></div>
+        <div class="stop">
+          <div class="stop-time">13:50</div>
+          <div class="stop-main">
+            <h4>I Club Wan Chai Hotel 寄放行李 / Check-in</h4>
+            <div class="where">灣仔 · 飯店櫃檯</div>
+            <div class="note">若房間尚未準備好，先寄放行李即可。放好行李直接去吃午餐（見下一站），14:40 再出門。</div>
+          </div>
+        </div>
+        <div class="stop food-stop">
+          <div class="stop-time">14:10</div>
+          <div class="stop-main">
+            <h4>🍜 午餐｜再興燒臘飯店</h4>
+            <div class="where">灣仔 軒尼詩道 265-267 號 C 座地下（門口在史釗域道）· 灣仔站 A4 出口步行 5 分鐘</div>
+            <div class="note">百年燒臘老店，米芝蓮必比登推薦過。<b>09:30–22:00，週日公休</b>（12/5 週六有開）。點三寶飯或叉燒、燒鵝雙拼；燒臘飯不附青菜，可加 HK$15 油菜。店內僅約 15 個位子，翻桌快，等 10–15 分鐘很正常。</div>
+          </div>
+        </div>
+        <div class="move"><span class="ic">🚇</span><span><b>灣仔 → 中環</b>：港島線 2 站（約 5 分鐘）；想慢慢看街景可搭電車（約 15 分鐘，HK$3）。</span></div>
+        <div class="stop">
+          <div class="stop-time">15:00</div>
+          <div class="stop-main">
+            <h4>中環 ifc 商場｜Santa's Christmas Airways</h4>
+            <div class="where">中環站 A 出口 · 國際金融中心商場</div>
+            <div class="note">11/20–1/1，免費。9 米節慶塔＋11 大復古航空打卡場景，<span class="x">新收錄</span>。從中環站走過去 3 分鐘，順路第一站。</div>
+          </div>
+        </div>
+        <div class="stop food-stop">
+          <div class="stop-time">15:40</div>
+          <div class="stop-main">
+            <h4>🍜 下午茶｜泰昌餅家（中環總店）</h4>
+            <div class="where">中環 擺花街 35 號地下 · 中環站步行約 8 分鐘</div>
+            <div class="note">1954 年創立，全港首創<b>牛油曲奇皮蛋撻</b>。<b>平日 09:30–19:30、週末至 20:00</b>。從 ifc 走過去約 8 分鐘，買了站著吃，不用排太久；吃完再走回皇后像廣場剛好 16:00。</div>
+          </div>
+        </div>
+        <div class="move"><span class="ic">🚶</span><span><b>ifc → 皇后像廣場</b>：沿行人天橋步行約 8 分鐘，不用搭車。</span></div>
+        <div class="stop">
+          <div class="stop-time">16:00</div>
+          <div class="stop-main">
+            <h4>中環 皇后像廣場花園｜香港繽紛冬日巡禮・中環冬日小鎮</h4>
+            <div class="where">中環站 K 出口 · 皇后像廣場花園（南、北廣場）</div>
+            <div class="note">週六開放 <b>11:00–23:30</b>，免費。22 米巨型聖誕樹、12 米蒸汽火車、熱氣球航站。白天先拍裝置與聖誕市集，晚上再回來看匯演。</div>
+          </div>
+        </div>
+        <div class="move"><span class="ic">🚶</span><span><b>皇后像廣場 → 置地廣塲</b>：沿德輔道中／雪廠街步行約 6 分鐘。</span></div>
+        <div class="stop">
+          <div class="stop-time">17:00</div>
+          <div class="stop-main">
+            <h4>中環 置地廣塲｜重遊昔日告羅士打酒店</h4>
+            <div class="where">中環站 G 出口 · 置地廣塲中庭</div>
+            <div class="note">11/20–1/3，<span class="x">新收錄</span>。多層復古互動裝置、鐘樓燈光音樂匯演、半空復古列車與聖誕頌歌；部分互動區需入場券（11 歲以下免費），一般開放至 19:30。從皇后像廣場走過去剛好順路。</div>
+          </div>
+        </div>
+        <div class="move"><span class="ic">🚇</span><span><b>中環 → 金鐘</b>：港島線 1 站（約 3 分鐘），或沿金鐘道步行 12 分鐘。</span></div>
+        <div class="stop">
+          <div class="stop-time">17:30</div>
+          <div class="stop-main">
+            <h4>金鐘 太古廣場｜Dreaming of Christmas 聖誕夜之夢</h4>
+            <div class="where">金鐘站 F 出口 · 太古廣場及星街小區</div>
+            <div class="note">11/13–1/3，免費入場。童話繪本主題、月光山丘、星空燈飾與童話森林，室內不怕冷，適合傍晚時段。</div>
+          </div>
+        </div>
+        <div class="move"><span class="ic">🚇</span><span><b>金鐘 → 中環</b>：港島線 1 站，回皇后像廣場卡位。</span></div>
+        <div class="stop">
+          <div class="stop-time">19:00</div>
+          <div class="stop-main">
+            <h4>回中環｜冬日小鎮光影匯演</h4>
+            <div class="where">皇后像廣場花園 · 望向終審法院、滙豐總行一側</div>
+            <div class="note">每晚 <b>19:00–23:00 每 30 分鐘一輪</b>，九幢大廈外牆投影。18:00 亮燈後天色與燈光最平衡，21:00 後人潮較散。</div>
+          </div>
+        </div>
+        <div class="move"><span class="ic">🚶</span><span><b>皇后像廣場 → 歌賦街</b>：步行約 10 分鐘（上坡），沿皇后大道中轉入砵典乍街再接歌賦街。</span></div>
+        <div class="stop food-stop">
+          <div class="stop-time">19:45</div>
+          <div class="stop-main">
+            <h4>🍜 晚餐｜九記牛腩</h4>
+            <div class="where">中環 歌賦街 21 號地舖 · 中環站步行約 10 分鐘（上坡）</div>
+            <div class="note">1920 年代開業，米芝蓮必比登常客。<b>12:30–22:30，週日公休</b>（12/5 週六有開）。上湯牛腩、咖哩牛筋腩是招牌；<b>只收現金</b>，低消每人約 HK$45–70，不接受訂位。19:45 到通常已過第一波，等 15–25 分鐘。</div>
+          </div>
+        </div>
+        <div class="move"><span class="ic">🚇</span><span><b>中環 → 灣仔</b>：港島線 2 站（約 5 分鐘）回飯店一帶。</span></div>
+        <div class="stop food-stop">
+          <div class="stop-time">21:15</div>
+          <div class="stop-main">
+            <h4>🍜 宵夜｜聰 C Dessert</h4>
+            <div class="where">灣仔 莊士敦道 35-45 號利文樓地下 1D 號舖 · 灣仔站步行 5 分鐘</div>
+            <div class="note">原「聰嫂私房甜品」團隊 2023 年在灣仔另起爐灶。招牌龍眼椰果冰、芒果雙皮奶。<b>營業時間未核實</b>，出發前請確認；吃完走 3 分鐘就到利東街市集。</div>
+          </div>
+        </div>
+        <div class="stop">
+          <div class="stop-time">21:30</div>
+          <div class="stop-main">
+            <h4>灣仔 利東街｜北歐聖誕市集（12/4–6 限定）</h4>
+            <div class="where">灣仔站 D 出口 · 利東街（皇后大道東 200 號）</div>
+            <div class="note">12/4–12/6 <b>只辦三天</b>，<span class="x">新收錄</span>。瑞典／丹麥／芬蘭商會合辦，北歐設計、工藝與節日傳統攤位。距飯店步行約 8 分鐘，回房前順道逛，<b>錯過 12/5 就沒了</b>。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 2 -->
+    <div class="day">
+      <div class="day-head">
+        <div class="day-date"><div class="d">06</div><div class="m">DEC · SUN</div></div>
+        <div class="day-title">
+          <h3>Day 2｜港島東 → 銅鑼灣 → 尖沙咀（天星小輪回灣仔）</h3>
+          <p>白天港島東與銅鑼灣，傍晚過海看尖沙咀光影，坐船直接回飯店旁</p>
+        </div>
+      </div>
+      <div class="day-body">
+        <div class="stop food-stop">
+          <div class="stop-time">08:00</div>
+          <div class="stop-main">
+            <h4>🍜 早餐｜金鳳茶餐廳</h4>
+            <div class="where">灣仔 春園街 41 號春園大廈地舖 · 灣仔站 D 出口步行 3 分鐘（飯店走 3 分鐘）</div>
+            <div class="note">1956 年開業，<b>「無冰凍奶茶」始祖</b>——奶茶冰鎮後上桌不加冰，從第一口濃到最後一口。<b>07:00–18:45</b>。必點凍奶茶＋雞批（酥皮）。08:00 到人最少，吃完 09:20 出發去鰂魚涌剛好。</div>
+          </div>
+        </div>
+        <div class="move"><span class="ic">🚇</span><span><b>灣仔 → 鰂魚涌</b>：港島線 4 站（約 10 分鐘），往太古坊。</span></div>
+        <div class="stop">
+          <div class="stop-time">10:00</div>
+          <div class="stop-main">
+            <h4>鰂魚涌 太古坊｜2026 白色聖誕市集</h4>
+            <div class="where">鰂魚涌站 A 出口 · 太古坊</div>
+            <div class="note">12/3–12/6 <b>只辦四天</b>，<span class="x">新收錄</span>。戶外白色主題市集，手作與節慶美食攤位；12/5–6 為最後兩天，早上人最少。</div>
+          </div>
+        </div>
+        <div class="move"><span class="ic">🚶</span><span><b>太古坊 → 太古城中心</b>：步行約 8 分鐘（或港島線 1 站）。</span></div>
+        <div class="stop">
+          <div class="stop-time">11:00</div>
+          <div class="stop-main">
+            <h4>太古 太古城中心｜Festival of Wonders</h4>
+            <div class="where">太古站 D 出口 · 太古城中心</div>
+            <div class="note">11/12–1/3，免費。<span class="x">新收錄</span>。奇趣城堡、幻象隧道與聖誕裝置，室內親子型展區，早上人最少。</div>
+          </div>
+        </div>
+        <div class="move"><span class="ic">🚇</span><span><b>太古 → 銅鑼灣</b>：港島線 4 站（約 10 分鐘）。</span></div>
+        <div class="stop">
+          <div class="stop-time">12:30</div>
+          <div class="stop-main">
+            <h4>銅鑼灣 利園區｜香港繽紛冬日巡禮・銅鑼灣冬日小鎮</h4>
+            <div class="where">銅鑼灣站 F1 出口 · 利園區（希慎道一帶）</div>
+            <div class="note">11/25 起開放，免費。大廈外牆光雕故事、全長 40 米戶外精靈酒吧，12 月更有聖誕市集同工作坊。中午先逛市集、吃午餐。</div>
+          </div>
+        </div>
+        <div class="stop food-stop">
+          <div class="stop-time">12:50</div>
+          <div class="stop-main">
+            <h4>🍜 午餐｜何洪記粥麵專家</h4>
+            <div class="where">銅鑼灣 軒尼詩道 500 號希慎廣場 12 樓 1204-1205 號舖 · 銅鑼灣站 F 出口</div>
+            <div class="note">米芝蓮一星雲吞麵，80 年老店。<b>11:00–22:00</b>。必點鮮蝦雲吞麵、生腸及第粥、乾炒牛河。就在利園區聖誕小鎮正上方，逛完直接上樓，不用再移動。</div>
+          </div>
+        </div>
+        <div class="stop food-stop">
+          <div class="stop-time">14:00</div>
+          <div class="stop-main">
+            <h4>🍜 甜品｜佳佳甜品</h4>
+            <div class="where">銅鑼灣 駱克道 472 號地舖 · 銅鑼灣站步行 5 分鐘</div>
+            <div class="note">多年米芝蓮必比登推介的中式糖水。<b>營業時間未核實</b>，出發前請確認。芝麻糊拼合桃露、腐竹糖水、薑汁湯圓都是招牌（薑汁偏辣，怕辣可換）。</div>
+          </div>
+        </div>
+        <div class="stop food-stop">
+          <div class="stop-time">14:30</div>
+          <div class="stop-main">
+            <h4>🍜 小吃｜低調高手大街小食</h4>
+            <div class="where">銅鑼灣 信德街 1-7 號美蘭閣地下 A 號舖 · 銅鑼灣站步行 3 分鐘</div>
+            <div class="note">被稱為「香港最脆雞蛋仔」之一，藏在超市裡面。<b>11:00–19:30，週一公休</b>（12/6 週日有開）。即叫即做，外脆內軟，帶一底邊走邊吃。</div>
+          </div>
+        </div>
+        <div class="move"><span class="ic">🚶</span><span><b>利園 → 灣仔飯店</b>：步行約 15 分鐘（或港島線 1 站），回房休息 1 小時、補個電。</span></div>
+        <div class="move"><span class="ic">🚇</span><span><b>灣仔 → 尖沙咀</b>：港島線至金鐘轉荃灣線，共 3 站（約 15 分鐘）。</span></div>
+        <div class="stop">
+          <div class="stop-time">17:00</div>
+          <div class="stop-main">
+            <h4>尖沙咀 香港文化中心建築群｜尖沙咀冬日光影</h4>
+            <div class="where">尖沙咀站 E 出口 · 文化中心、鐘樓一帶海濱</div>
+            <div class="note">11/18–1/5，免費。文化中心同鐘樓化身《冬日星光音樂會》光影；藝術館披上極光，太空館變身巨型雪花水晶球＋7,000 顆燈球燈海。屬戶外光影，<b>入夜後效果最佳</b>。</div>
+          </div>
+        </div>
+        <div class="move"><span class="ic">🚶</span><span><b>文化中心 → 海港城海運大廈</b>：沿海濱步行約 8 分鐘。</span></div>
+        <div class="stop">
+          <div class="stop-time">18:00</div>
+          <div class="stop-main">
+            <h4>尖沙咀 海港城｜Christmas Togetherness 三層立體火車站</h4>
+            <div class="where">尖沙咀站 A1 出口 · 海運大廈露天廣場</div>
+            <div class="note">11/19–1/3，免費，<span class="x">新收錄</span>。全長 40 米、三層立體火車站大堂，頂部機動火車定時開出，入口 8 米高聖誕樹＋逾 30 棵聖誕樹。亮燈後最好拍。</div>
+          </div>
+        </div>
+        <div class="move"><span class="ic">🚶</span><span><b>海運大廈 → LCX</b>：同一商場內步行 3 分鐘。</span></div>
+        <div class="stop">
+          <div class="stop-time">18:30</div>
+          <div class="stop-main">
+            <h4>尖沙咀 LCX（海港城）｜Pingu 冰 FUN 小鎮</h4>
+            <div class="where">尖沙咀站 · 海港城海運大廈 LCX</div>
+            <div class="note">11/19–1/3，免費。Pingu 冰雪世界＋5 大互動打卡區，室內可順便吃晚餐（海港城餐廳選擇多）。</div>
+          </div>
+        </div>
+        <div class="move"><span class="ic">🚶</span><span><b>海港城 → 帝苑酒店</b>：沿海防道轉入麼地道，步行約 10 分鐘。</span></div>
+        <div class="stop gift-stop">
+          <div class="stop-time">19:15</div>
+          <div class="stop-main">
+            <h4>🎁 伴手禮｜帝苑餅店 Fine Foods（蝴蝶酥）</h4>
+            <div class="where">尖沙咀 麼地道 69 號帝苑酒店大堂 · 尖沙咀／尖東站 P2 出口步行 3 分鐘</div>
+            <div class="note"><b>11:00–20:00</b>。招牌蝴蝶酥、杏仁條，鐵盒裝送禮很體面。<b>機場沒有設點，只能市區買</b>，所以排今天。每人限購 6 件，建議先上網預訂或下載官方 App 會員（約 9 折）。20:00 關門，19:15 到還有貨。</div>
+          </div>
+        </div>
+        <div class="move"><span class="ic">🚶</span><span><b>帝苑 → iSQUARE</b>：沿彌敦道步行約 8 分鐘。</span></div>
+        <div class="stop">
+          <div class="stop-time">20:00</div>
+          <div class="stop-main">
+            <h4>尖沙咀 iSQUARE｜MEWKY 奇幻聖誕裁縫店</h4>
+            <div class="where">尖沙咀站 H 出口 · iSQUARE 國際廣場</div>
+            <div class="note">11/14–1/3，免費。5 米高奇幻彩繪＋3 大魔法裁縫打卡區，商場中庭，晚上燈光較好拍。</div>
+          </div>
+        </div>
+        <div class="move"><span class="ic">🚶</span><span><b>iSQUARE → Mira Place</b>：沿彌敦道再走 5 分鐘。</span></div>
+        <div class="stop">
+          <div class="stop-time">20:45</div>
+          <div class="stop-main">
+            <h4>尖沙咀 Mira Place｜Groovy Christmas Town</h4>
+            <div class="where">尖沙咀站 B1 出口 · Mira Place 1 中庭</div>
+            <div class="note">11/10–1/3，免費。80 年代美式復古場景＋1:1 紅色跑車，暖色調最適合當當天收尾照。</div>
+          </div>
+        </div>
+        <div class="move"><span class="ic">🚶</span><span><b>Mira Place → 尖東麼地道</b>：沿彌敦道轉麼地道步行約 12 分鐘。</span></div>
+        <div class="stop">
+          <div class="stop-time">21:15</div>
+          <div class="stop-main">
+            <h4>尖東｜閃爍尖東耀香江 2026（Party with DJ Santa）</h4>
+            <div class="where">尖東站 N 出口 · 尖沙咀中心、帝國中心、麼地道天橋</div>
+            <div class="note">11/17–1/3，每晚 18:00–23:00，免費，<span class="x">新收錄</span>。AI 光影匯演、麼地道星際燈海與旋轉木馬裝飾。看完沿麼地道走回尖沙咀站（約 10 分鐘）搭荃灣線回金鐘轉港島線，或直接步行到天星碼頭。</div>
+          </div>
+        </div>
+        <div class="move"><span class="ic">🚶</span><span><b>麼地道 → 金巴利道</b>：步行約 8 分鐘。</span></div>
+        <div class="stop food-stop">
+          <div class="stop-time">21:45</div>
+          <div class="stop-main">
+            <h4>🍜 宵夜｜蓮香樓（尖沙咀店）</h4>
+            <div class="where">尖沙咀 金巴利道 25 號長利商業大廈 1-2 樓 · 尖沙咀站 B1 出口步行 4 分鐘</div>
+            <div class="note">1889 年源起的百年茶樓，尖沙咀店 <b>24 小時營業</b>（每日只休一小時清潔）。保留<b>推車點心</b>與茶盅沖茶，茶資每人約 HK$18。常需併桌，尖峰要排 30–40 分鐘；21:45 後人潮已散，是最好進場的時段。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 3 -->
+    <div class="day">
+      <div class="day-head">
+        <div class="day-date"><div class="d">07</div><div class="m">DEC · MON</div></div>
+        <div class="day-title">
+          <h3>Day 3｜灣仔退房 → 東涌 SKIPPY → 14:00 到機場（UO108 16:50）</h3>
+          <p>把東涌排在往機場的路上，不繞路、不趕時間</p>
+        </div>
+      </div>
+      <div class="day-body">
+        <div class="stop">
+          <div class="stop-time">09:00</div>
+          <div class="stop-main">
+            <h4>飯店退房，行李一起帶走</h4>
+            <div class="where">I Club Wan Chai Hotel</div>
+            <div class="note">今天不再回飯店，行李直接帶去東涌（東薈城有置物櫃／寄放服務）。早餐在飯店或附近茶餐廳解決。</div>
+          </div>
+        </div>
+        <div class="move"><span class="ic">🚇</span><span><b>灣仔 → 上環</b>：港島線 3 站（約 7 分鐘）。行李先寄飯店或帶去上環站置物櫃。</span></div>
+        <div class="stop gift-stop">
+          <div class="stop-time">10:00</div>
+          <div class="stop-main">
+            <h4>🎁 伴手禮｜檸檬王（甘草檸檬）</h4>
+            <div class="where">上環 永吉街 18 號地舖 · 上環站 E1 出口步行 3 分鐘</div>
+            <div class="note"><b>10:00–18:00</b>。1973 年街邊起家的涼果老店，招牌甘草檸檬<b>常一開店就被掃光，務必 10:00 到</b>。可刷卡、八達通、行動支付。</div>
+          </div>
+        </div>
+        <div class="stop gift-stop">
+          <div class="stop-time">10:15</div>
+          <div class="stop-main">
+            <h4>🎁 伴手禮｜珍妮曲奇 Jenny Bakery（聰明小熊）</h4>
+            <div class="where">上環 永和街 15 號地舖 · 上環站 E2 出口步行 2 分鐘（檸檬王隔壁一條街）</div>
+            <div class="note"><b>10:00–19:00</b>。四味奶油曲奇、八味果仁曲奇是招牌。<b>只收現金</b>，熱門口味賣完會提早打烊。上環店人潮比尖沙咀店少很多。全港僅上環、尖沙咀兩家正店，路邊同款包裝多為仿品。</div>
+          </div>
+        </div>
+        <div class="move"><span class="ic">🚇</span><span><b>上環 → 東涌</b>：港島線至香港站轉東涌線，全程約 40 分鐘（八達通約 HK$25）。</span></div>
+        <div class="stop">
+          <div class="stop-time">11:20</div>
+          <div class="stop-main">
+            <h4>東涌 東薈城名店倉｜SKIPPY 花生烘焙所</h4>
+            <div class="where">東涌站 C 出口 · 東薈城名店倉</div>
+            <div class="note">11/20–1/3，免費。<span class="x">新收錄</span>。4 米巨型焗爐＋6 大聖誕烘焙打卡位。商場 10:00 開門，剛好第一批進場，人少好拍；行李先寄一樓置物櫃。</div>
+          </div>
+        </div>
+        <div class="stop gift-stop">
+          <div class="stop-time">12:20</div>
+          <div class="stop-main">
+            <h4>🎁 伴手禮｜Bakehouse（東涌店）酸種蛋撻</h4>
+            <div class="where">東涌 東薈城名店倉地下 G19 號舖 · 東涌站 C 出口</div>
+            <div class="note"><b>08:00–21:00</b>。市區各店幾乎天天排隊、蛋撻常上午售罄；<b>東涌店遊客少、不用排</b>，還有東涌店限定的奶茶蜂蜜丹麥酥。單顆約 HK$12.5，整盒 6 入最好帶，放手提行李上層別壓。</div>
+          </div>
+        </div>
+        <div class="stop food-stop">
+          <div class="stop-time">12:40</div>
+          <div class="stop-main">
+            <h4>🍜 午餐｜羅麥記</h4>
+            <div class="where">東涌 東薈城名店倉 5 樓 510 號舖 · 東涌站 C 出口</div>
+            <div class="note">把創意玩進傳統茶餐廳：磚頭焗豬扒飯、黑松露 carbonara 撈公仔麵、麥 Sir 乳鴿仔、斑蘭醬椰絲厚多士。牆身畫滿六七十年代插畫。<b>營業時間未核實</b>，出發前請確認。<b>想吃點心可換同商場的「悅見」</b>（粵菜＋創新點心，親子友善）。13:10 回置物櫃取行李。</div>
+          </div>
+        </div>
+        <div class="move"><span class="ic">🚌</span><span><b>東涌 → 機場</b>：S1 巴士約 15 分鐘（HK$3.5），或東涌線至青衣轉機場快線。<b>13:40 前</b>離開東涌，14:00 前抵達 T1 最安心。</span></div>
+        <div class="stop">
+          <div class="stop-time">14:00</div>
+          <div class="stop-main">
+            <h4>香港國際機場 T1｜UO108 報到</h4>
+            <div class="where">香港國際機場一號客運大樓</div>
+            <div class="note">香港出發<b>起飛前 60 分鐘關櫃（15:50）</b>，14:00 到有充裕時間退稅、逛免稅店。16:50 起飛，18:25 抵台中。</div>
+          </div>
+        </div>
+        <div class="stop gift-stop">
+          <div class="stop-time">14:10</div>
+          <div class="stop-main">
+            <h4>🎁 伴手禮｜曲奇四重奏 Cookies Quartet（機場非禁區）</h4>
+            <div class="where">機場 T1 L7 離港層<b>非禁區</b> 7T039 號舖（近 G 行段）· 過安檢前</div>
+            <div class="note"><b>07:00–23:00</b>。2008 年九龍城起家，手工曲奇與蝴蝶酥是招牌，鐵盒裝送禮體面。非禁區＝還沒過安檢就能買，買完再過關。</div>
+          </div>
+        </div>
+        <div class="stop gift-stop">
+          <div class="stop-time">14:20</div>
+          <div class="stop-main">
+            <h4>🎁 伴手禮｜皇玥 Imperial Patisserie（機場非禁區）</h4>
+            <div class="where">機場 T1 L7 離港層<b>非禁區</b>東大堂 7E101B 號舖 · 過安檢前</div>
+            <div class="note"><b>06:00–23:00</b>。2019 年創立，由半島酒店流心奶黃月餅始創人與米芝蓮星級大廚主理，蝴蝶酥、蜂巢蛋卷，包裝最精緻、價位也最高（每盒約 HK$200–900）。與曲奇四重奏同一層，兩家一起逛。</div>
+          </div>
+        </div>
+        <div class="stop gift-stop">
+          <div class="stop-time">14:40</div>
+          <div class="stop-main">
+            <h4>🎁 伴手禮｜奇華餅家（機場禁區）</h4>
+            <div class="where">機場 T1 <b>禁區</b> 7E101 號舖、6W533 號舖、7T115 號舖 · 過安檢後</div>
+            <div class="note"><b>07:00–23:00</b>。老字號，蜂巢蛋卷與曲奇禮盒價格親民、適合大量採購；熊貓曲奇禮盒有清真認證。禁區內買完直接手提登機，不受液體限制。<b>注意：含肉鬆的品項多數國家禁止入境，買前先確認。</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 美食與伴手禮 ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">PART 05</span>
+      <h2>港式美食與伴手禮：依地區順路排進三天</h2>
+    </div>
+    <p class="sec-desc">這一輪新增 <b>15 間</b>港式美食（茶餐廳／冰室、燒臘、點心、粥麵、糖水、街頭小吃）與 <b>7 個</b>伴手禮品牌。排法只有一個原則：<b>不為了吃而繞路</b>——每一餐都掛在當天已經會經過的區，走路或一兩站地鐵就到。伴手禮則集中在<b>最後一天（12/7）</b>：上環兩家老店開店第一批、東涌東薈城、以及機場禁區內外，一次買齊不用提著跑三天。</p>
+
+    <div class="warn">
+      <b>先說清楚資料邊界：</b>店名、地址、營業時間與公休日以下方標註的來源逐項核對過；<b>價格一律不寫</b>（各店調價頻繁，且多數店家官網未公開完整價目）。標示「<b>營業時間未核實</b>」的店家，出發前請再查一次店家公告或致電確認，尤其是公休日與最後點餐時間。排隊名店（甘牌燒鵝、九記牛腩、蓮香樓、珍妮曲奇）尖峰時段常排 30–60 分鐘，行程已預留緩衝，但無法保證。
+    </div>
+
+    <h3 style="font-size:17px;margin:26px 0 12px;padding-left:11px;border-left:4px solid var(--gold)">5.1　三天美食時段表</h3>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:11%">日期</th>
+            <th style="width:11%">時段</th>
+            <th style="width:11%">餐別</th>
+            <th style="width:26%">店家</th>
+            <th style="width:15%">類型</th>
+            <th style="width:26%">為什麼排這裡</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="grp-row"><td colspan="6">12/5（六）Day 1 · 灣仔 → 中環 → 金鐘</td></tr>
+          <tr>
+            <td>12/5</td><td>14:10</td><td>午餐</td>
+            <td><span class="ev-name">再興燒臘飯店</span></td>
+            <td><span class="region-tag x">燒臘</span></td>
+            <td>飯店放完行李走路 5 分鐘，吃完 15:00 剛好接中環</td>
+          </tr>
+          <tr>
+            <td>12/5</td><td>15:50</td><td>下午茶</td>
+            <td><span class="ev-name">泰昌餅家</span></td>
+            <td><span class="region-tag x">蛋撻</span></td>
+            <td>ifc 走過去 8 分鐘，順路接皇后像廣場</td>
+          </tr>
+          <tr>
+            <td>12/5</td><td>19:45</td><td>晚餐</td>
+            <td><span class="ev-name">九記牛腩</span></td>
+            <td><span class="region-tag x">牛腩麵</span></td>
+            <td>看完光影匯演走 10 分鐘，歌賦街就在中環半山邊</td>
+          </tr>
+          <tr>
+            <td>12/5</td><td>21:40</td><td>宵夜</td>
+            <td><span class="ev-name">聰 C Dessert</span></td>
+            <td><span class="region-tag x">糖水</span></td>
+            <td>利東街市集走回飯店途中，莊士敦道順路</td>
+          </tr>
+
+          <tr class="grp-row"><td colspan="6">12/6（日）Day 2 · 灣仔 → 港島東 → 銅鑼灣 → 尖沙咀</td></tr>
+          <tr>
+            <td>12/6</td><td>08:00</td><td>早餐</td>
+            <td><span class="ev-name">金鳳茶餐廳</span></td>
+            <td><span class="region-tag x">茶餐廳</span></td>
+            <td>飯店走 3 分鐘，08:00 開門人最少，吃完直接去鰂魚涌</td>
+          </tr>
+          <tr>
+            <td>12/6</td><td>12:50</td><td>午餐</td>
+            <td><span class="ev-name">何洪記</span></td>
+            <td><span class="region-tag x">粥麵</span></td>
+            <td>就在利園區希慎廣場 12 樓，逛完聖誕小鎮上樓即到</td>
+          </tr>
+          <tr>
+            <td>12/6</td><td>14:00</td><td>甜品</td>
+            <td><span class="ev-name">佳佳甜品</span></td>
+            <td><span class="region-tag x">糖水</span></td>
+            <td>希慎走 5 分鐘到駱克道，飯後一碗剛好</td>
+          </tr>
+          <tr>
+            <td>12/6</td><td>14:30</td><td>小吃</td>
+            <td><span class="ev-name">低調高手大街小食</span></td>
+            <td><span class="region-tag x">雞蛋仔</span></td>
+            <td>信德街在銅鑼灣站旁，回飯店前順手帶一底</td>
+          </tr>
+          <tr>
+            <td>12/6</td><td>21:30</td><td>宵夜</td>
+            <td><span class="ev-name">蓮香樓（尖沙咀）</span></td>
+            <td><span class="region-tag x">點心</span></td>
+            <td>24 小時營業，尖東看完燈走 8 分鐘，推車點心當收尾</td>
+          </tr>
+
+          <tr class="grp-row"><td colspan="6">12/7（一）Day 3 · 上環 → 東涌 → 機場</td></tr>
+          <tr>
+            <td>12/7</td><td>12:40</td><td>午餐</td>
+            <td><span class="ev-name">羅麥記</span></td>
+            <td><span class="region-tag x">茶餐廳</span></td>
+            <td>東薈城 5 樓，行李寄一樓置物櫃，吃完 13:40 走</td>
+          </tr>
+          <tr>
+            <td>12/7</td><td>12:40</td><td>午餐備選</td>
+            <td><span class="ev-name">悅見</span></td>
+            <td><span class="region-tag x">粵菜點心</span></td>
+            <td>同在東薈城，想吃點心就換這間</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="font-size:17px;margin:30px 0 12px;padding-left:11px;border-left:4px solid var(--gold)">5.2　15 間港式美食（含 5 間順路備選）</h3>
+    <div class="meal-grid">
+
+      <div class="meal">
+        <span class="mtag">DAY 1 · 午餐 14:10</span>
+        <h4>再興燒臘飯店</h4>
+        <div class="mwhere">灣仔 軒尼詩道 265-267 號 C 座地下（門口在史釗域道）· 灣仔站 A4 出口步行 5 分鐘</div>
+        <div class="mnote">百年燒臘老店，米芝蓮必比登推薦過。<b>09:30–22:00，週日公休</b>（12/5 週六有開）。必點三寶飯、叉燒、燒鵝；燒臘飯不附青菜，可加油菜。店內僅約 15 個位子，翻桌快。</div>
+      </div>
+
+      <div class="meal">
+        <span class="mtag">DAY 1 · 下午茶 15:50</span>
+        <h4>泰昌餅家（中環總店）</h4>
+        <div class="mwhere">中環 擺花街 35 號地下 · 中環站步行約 8 分鐘</div>
+        <div class="mnote">1954 年創立，全港首創<b>牛油曲奇皮蛋撻</b>。<b>平日 09:30–19:30、週末至 20:00</b>。從 ifc 走過去剛好接皇后像廣場，蛋撻站著吃、不用排太久。</div>
+      </div>
+
+      <div class="meal">
+        <span class="mtag">DAY 1 · 晚餐 19:45</span>
+        <h4>九記牛腩</h4>
+        <div class="mwhere">中環 歌賦街 21 號地舖 · 中環站步行約 10 分鐘（上坡）</div>
+        <div class="mnote">1920 年代開業，米芝蓮必比登常客。<b>12:30–22:30，週日公休</b>（12/5 週六有開）。上湯牛腩、咖哩牛筋腩是招牌；<b>只收現金</b>，低消每人約 HK$45–70，不接受訂位。</div>
+      </div>
+
+      <div class="meal">
+        <span class="mtag">DAY 1 · 宵夜 21:40</span>
+        <h4>聰 C Dessert</h4>
+        <div class="mwhere">灣仔 莊士敦道 35-45 號利文樓地下 1D 號舖 · 灣仔站步行 5 分鐘</div>
+        <div class="mnote">原「聰嫂私房甜品」團隊 2023 年在灣仔另起爐灶。招牌龍眼椰果冰、芒果雙皮奶。<b>營業時間未核實</b>，出發前請確認；利東街市集走回飯店剛好經過。</div>
+      </div>
+
+      <div class="meal">
+        <span class="mtag">DAY 2 · 早餐 08:00</span>
+        <h4>金鳳茶餐廳</h4>
+        <div class="mwhere">灣仔 春園街 41 號春園大廈地舖 · 灣仔站 D 出口步行 3 分鐘</div>
+        <div class="mnote">1956 年開業，<b>「無冰凍奶茶」始祖</b>——奶茶冰鎮後上桌不加冰，從第一口濃到最後一口。<b>07:00–18:45</b>。必點凍奶茶＋雞批（酥皮）。店內很擠，要有心理準備。</div>
+      </div>
+
+      <div class="meal">
+        <span class="mtag">DAY 2 · 午餐 12:50</span>
+        <h4>何洪記粥麵專家</h4>
+        <div class="mwhere">銅鑼灣 軒尼詩道 500 號希慎廣場 12 樓 1204-1205 號舖 · 銅鑼灣站 F 出口</div>
+        <div class="mnote">米芝蓮一星雲吞麵，80 年老店。<b>11:00–22:00</b>。必點鮮蝦雲吞麵、生腸及第粥、乾炒牛河。就在利園區聖誕小鎮正上方，逛完直接上樓。</div>
+      </div>
+
+      <div class="meal">
+        <span class="mtag">DAY 2 · 甜品 14:00</span>
+        <h4>佳佳甜品</h4>
+        <div class="mwhere">銅鑼灣 駱克道 472 號地舖 · 銅鑼灣站步行 5 分鐘</div>
+        <div class="mnote">多年米芝蓮必比登推介的中式糖水。<b>營業時間未核實</b>，出發前請確認。芝麻糊拼合桃露、腐竹糖水、薑汁湯圓都是招牌（薑汁偏辣，怕辣可換）。</div>
+      </div>
+
+      <div class="meal">
+        <span class="mtag">DAY 2 · 小吃 14:30</span>
+        <h4>低調高手大街小食</h4>
+        <div class="mwhere">銅鑼灣 信德街 1-7 號美蘭閣地下 A 號舖 · 銅鑼灣站步行 3 分鐘</div>
+        <div class="mnote">被稱為「香港最脆雞蛋仔」之一，藏在超市裡面。<b>11:00–19:30，週一公休</b>（12/6 週日有開）。即叫即做，外脆內軟，帶一底邊走邊吃。</div>
+      </div>
+
+      <div class="meal">
+        <span class="mtag">DAY 2 · 宵夜 21:30</span>
+        <h4>蓮香樓（尖沙咀店）</h4>
+        <div class="mwhere">尖沙咀 金巴利道 25 號長利商業大廈 1-2 樓 · 尖沙咀站 B1 出口步行 4 分鐘</div>
+        <div class="mnote">1889 年源起的百年茶樓，尖沙咀店 <b>24 小時營業</b>（每日只休一小時清潔）。保留<b>推車點心</b>與茶盅沖茶，茶資每人約 HK$18。常需併桌，尖峰要排 30–40 分鐘。</div>
+      </div>
+
+      <div class="meal">
+        <span class="mtag">DAY 3 · 午餐 12:40</span>
+        <h4>羅麥記</h4>
+        <div class="mwhere">東涌 達東路 20 號東薈城名店倉 5 樓 510 號舖 · 東涌站 C 出口</div>
+        <div class="mnote">把創意玩進傳統茶餐廳：磚頭焗豬扒飯、黑松露 carbonara 撈公仔麵、麥 Sir 乳鴿仔、斑蘭醬椰絲厚多士。牆身畫滿六七十年代插畫。<b>營業時間未核實</b>，出發前請確認。</div>
+      </div>
+
+      <div class="meal">
+        <span class="mtag">備選 · DAY 1 午餐</span>
+        <h4>華星冰室（灣仔店）</h4>
+        <div class="mwhere">灣仔 克街 6 號廣生行大廈地下 B1 號舖 · 灣仔站 A4 出口步行 6 分鐘</div>
+        <div class="mnote">陳奕迅、楊千嬅常去的明星冰室，灣仔是本店。<b>07:00 開，晚上 9–10 點收</b>（各來源略有差異）。必點黑松露炒蛋多士、校長多士、脆皮奶油豬仔包。若不想吃燒臘就換這間。</div>
+      </div>
+
+      <div class="meal">
+        <span class="mtag">備選 · DAY 1 晚餐</span>
+        <h4>甘牌燒鵝</h4>
+        <div class="mwhere">灣仔 軒尼詩道 226 號寶華商業中心地舖 · 灣仔站 A2 出口步行 4 分鐘</div>
+        <div class="mnote">鏞記第三代自立門戶，<b>米芝蓮一星（2015–2026 連續上榜）</b>。<b>11:30–21:30</b>，不接受訂位、只約 30 個座位，尖峰常排 30 分鐘以上。招牌燒鵝配梅子醬、蜜汁叉燒。想吃燒鵝就取代九記。</div>
+      </div>
+
+      <div class="meal">
+        <span class="mtag">備選 · DAY 2 午餐</span>
+        <h4>龍點心（灣仔店）</h4>
+        <div class="mwhere">灣仔 軒尼詩道 216-218 號地下 A&amp;B 號舖 · 灣仔站步行 3 分鐘</div>
+        <div class="mnote">新派點心，老香港情懷裝潢。<b>07:00–23:30</b>。四大龍燒賣、脆脆富貴紅米腸粉、拉絲菠蘿包、口水汁龍利魚腸粉。人均約 HK$100–200。想飲茶又不想跑尖沙咀就選這間。</div>
+      </div>
+
+      <div class="meal">
+        <span class="mtag">備選 · DAY 2 小吃</span>
+        <h4>媽咪雞蛋仔</h4>
+        <div class="mwhere">灣仔 軒尼詩道 130 號修頓中心地下 D3 號舖（另有灣仔道 181A-181G 地下 D2）· 灣仔站步行 2 分鐘</div>
+        <div class="mnote">全港分店最多的雞蛋仔專門店，曾連續獲米芝蓮街頭小食推介。口味十多款，伯爵茶、比利時黑朱古力最受歡迎。<b>營業時間未核實</b>，出發前請確認。回飯店路上順手買。</div>
+      </div>
+
+      <div class="meal">
+        <span class="mtag">備選 · DAY 3 午餐</span>
+        <h4>悅見</h4>
+        <div class="mwhere">東涌 達東路 20 號東薈城名店倉 · 東涌站 C 出口</div>
+        <div class="mnote">東薈城內的粵菜＋創新點心，空間寬敞、親子友善（有兒童座椅餐具）。招牌燒味三拼、四大天王燒賣、乾炒安格斯牛小排河。<b>營業時間與樓層舖號未核實</b>，出發前請確認。</div>
+      </div>
+
+    </div>
+
+    <h3 style="font-size:17px;margin:30px 0 12px;padding-left:11px;border-left:4px solid #D81B60">5.3　7 個伴手禮品牌：在哪買、哪天買最順</h3>
+    <p class="sec-desc" style="margin-bottom:16px">排序邏輯：<b>12/7 一天買完</b>。上環兩家老店 10:00 開門第一批（人最少、貨最齊）→ 東涌東薈城 → 機場禁區內外補齊。這樣前兩天完全不用提著餅乾跑行程。</p>
+
+    <div class="gift-card">
+      <h4>1. 檸檬王 · 甘草檸檬</h4>
+      <div class="gmeta">上環 永吉街 18 號地舖 · 上環站 E1 出口步行 3 分鐘 · <b>10:00–18:00</b></div>
+      <div class="gbuy"><b>建議 12/7（一）10:00 開店第一批</b>，上環。1973 年街邊起家的涼果老店，招牌甘草檸檬常一開店就被掃光，<b>務必早到</b>。可刷卡、八達通、行動支付。</div>
+    </div>
+
+    <div class="gift-card">
+      <h4>2. 珍妮曲奇 Jenny Bakery（聰明小熊）</h4>
+      <div class="gmeta">上環 永和街 15 號地舖（上環站 E2 出口 2 分鐘）· <b>10:00–19:00</b>；尖沙咀 彌敦道 62 號美麗都大廈 1 樓 42 號舖（尖沙咀站 D2 出口 1 分鐘）· 10:00–19:00</div>
+      <div class="gbuy"><b>建議 12/7（一）10:15 上環店</b>——就在檸檬王隔壁一條街，兩家一起買完。上環店人潮比尖沙咀店少很多。<b>只收現金</b>，熱門口味賣完會提早打烊。全港僅這兩家正店，路邊同款包裝多為仿品。</div>
+    </div>
+
+    <div class="gift-card">
+      <h4>3. 帝苑餅店 Fine Foods · 蝴蝶酥</h4>
+      <div class="gmeta">尖沙咀 麼地道 69 號帝苑酒店大堂 · 尖沙咀／尖東站 P2 出口步行 3 分鐘 · <b>11:00–20:00</b></div>
+      <div class="gbuy"><b>建議 12/6（日）19:00</b>，尖沙咀。海港城／LCX 走過去約 10 分鐘，接 iSQUARE 剛好順路，且 20:00 關門前一定買得到。<b>機場沒有設點</b>，只能市區買。每人限購 6 件，建議先上網預訂或下載官方 App 會員（約 9 折）。</div>
+    </div>
+
+    <div class="gift-card">
+      <h4>4. Bakehouse · 酸種蛋撻</h4>
+      <div class="gmeta">東涌 達東路 20 號東薈城名店倉地下 G19 號舖 · <b>08:00–21:00</b>（另有灣仔大王東街 14 號、銅鑼灣啟超道 16 號、中環士丹頓街 5 號、尖沙咀漢口道 44 號）</div>
+      <div class="gbuy"><b>建議 12/7（一）東涌店</b>。市區各店幾乎天天排隊、蛋撻常上午售罄；<b>東涌店遊客少、不用排</b>，還有東涌店限定的奶茶蜂蜜丹麥酥。單顆約 HK$12.5，整盒 6 入最好帶。</div>
+    </div>
+
+    <div class="gift-card">
+      <h4>5. 曲奇四重奏 Cookies Quartet · 蝴蝶酥／雜錦曲奇</h4>
+      <div class="gmeta">機場 一號客運大樓 L7 離港層<b>非禁區</b> 7T039 號舖（近 G 行段）· <b>07:00–23:00</b>；尖沙咀 金馬倫道 16 號金輝大廈地下 F 舖 10:00–22:00；銅鑼灣 怡和街 2-6 號英光大廈地下 3 號舖</div>
+      <div class="gbuy"><b>建議 12/7（一）14:10 機場非禁區</b>，報到前先買。2008 年九龍城起家，手工曲奇與蝴蝶酥是招牌，鐵盒裝送禮體面。非禁區＝還沒過安檢就能買，買完再辦登機。</div>
+    </div>
+
+    <div class="gift-card">
+      <h4>6. 奇華餅家 · 蜂巢蛋卷／熊貓曲奇</h4>
+      <div class="gmeta">機場 一號客運大樓<b>禁區</b> 7E101 號舖、6W533 號舖、7T115 號舖 · <b>07:00–23:00</b></div>
+      <div class="gbuy"><b>建議 12/7（一）14:40 過安檢後</b>。老字號，蛋卷與曲奇禮盒價格親民、適合大量採購；熊貓曲奇禮盒有清真認證。禁區內買完直接手提登機，不受液體限制。<b>注意：含肉鬆的品項多數國家禁止入境，買前先確認。</b></div>
+    </div>
+
+    <div class="gift-card">
+      <h4>7. 皇玥 Imperial Patisserie · 蝴蝶酥／蜂巢蛋卷</h4>
+      <div class="gmeta">機場 一號客運大樓 L7 離港層<b>非禁區</b>東大堂 7E101B 號舖 · <b>06:00–23:00</b></div>
+      <div class="gbuy"><b>建議 12/7（一）14:20 機場非禁區</b>，與曲奇四重奏同一層，兩家一起逛。2019 年創立，由半島酒店流心奶黃月餅始創人與米芝蓮星級大廚主理，包裝最精緻、價位也最高（每盒約 HK$200–900）。</div>
+    </div>
+
+    <div class="warn" style="margin-top:20px">
+      <b>伴手禮三個實務提醒：</b><br>
+      ① <b>珍妮曲奇只收現金</b>，12/7 早上先備好港幣；檸檬王、泰昌、Bakehouse 可刷卡或八達通。<br>
+      ② <b>蛋撻、蝴蝶酥都怕壓</b>——Bakehouse 與帝苑請放手提行李上層，別塞進託運。<br>
+      ③ <b>肉類製品（肉鬆蛋卷、含肉餡餅食）多數國家禁止入境</b>，回台中前請確認台灣海關規定；純餅乾、蛋卷、曲奇一般可帶。
+    </div>
+  </div>
+</section>
+
+<!-- ============ 注意事項 ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">PART 06</span>
+      <h2>行前提醒與彈性備案</h2>
+    </div>
+    <div class="notes">
+      <h3>時間與開放提醒</h3>
+      <ul>
+        <li><b>12/5–6 限定、錯過就沒了</b>：灣仔<b>利東街北歐聖誕市集</b>（12/4–6）、鰂魚涌<b>太古坊白色聖誕市集</b>（12/3–6）、尖沙咀 iSQUARE <b>MEWKY 冬日市集</b>（12/5–6）、九龍灣 <b>MegaBox 兒童聖誕市集</b>（12/5、6）。</li>
+        <li><b>置地廣塲告羅士打酒店</b>部分互動區需入場券（11 歲以下免費），一般開放至 19:30，Day 1 排 17:00 剛好。</li>
+        <li><b>尖東「閃爍尖東耀香江」</b>每晚 18:00–23:00 亮燈，Day 2 排 21:15 收尾，看完走回尖沙咀站約 10 分鐘。</li>
+        <li>中環冬日小鎮平日 <b>16:00</b> 才開、週末 <b>11:00</b> 開；12/5 是週六，白天就能進場，12/7 若想再去要等下午 4 點後（但當天要趕飛機，不建議）。</li>
+        <li>光影匯演每晚 19:00–23:00 每 30 分鐘一輪，<b>18:00 亮燈</b>，建議 18:30 前卡位。</li>
+        <li>銅鑼灣利園區「聖誕精靈村莊」<b>11/25 才開始</b>，12/5 起已可參觀，12 月更有聖誕市集同工作坊。</li>
+        <li>尖沙咀文化中心「冬日光影」屬戶外光影，<b>入夜後效果最佳</b>，已排在 Day 2 傍晚。</li>
+        <li>東薈城 SKIPPY 商場 <b>10:00 開門</b>，Day 3 排 10:20 剛好第一批，不會耽誤 13:40 離開東涌、14:00 到機場。</li>
+      </ul>
+    </div>
+    <div class="notes">
+      <h3>已結束、別白跑</h3>
+      <ul>
+        <li><b>銅鑼灣時代廣場「芝麻街聖誕糖果小鎮」只到 11/26</b>，出發前已結束，已從行程中剔除。</li>
+        <li><b>尖沙咀中港城車尾箱聖誕市集</b> 12/11 才開始，不在 12/5–7 期間，已標示「不在期間」。</li>
+        <li><b>啟德體育園「Merry Balloon Parade」僅 12/27 單日</b>，不在 12/5–7 期間，已標示「不在期間」。</li>
+        <li>三篇貼文中非聖誕的動漫、藝術、美食、品牌展（如 BIGBANG、Dancing Pumpkin、孤獨搖滾、K11 太空展、M+、香港故宮等）<b>一律不收錄</b>，本頁只保留聖誕相關活動。</li>
+      </ul>
+    </div>
+    <div class="notes">
+      <h3>彈性備案（若某天想換路線）</h3>
+      <ul>
+        <li><b>紅磡 黃埔天地《小王子》玫瑰星空</b> — 11/17 起，萬朵玫瑰星空步道。可接在 Day 2 尖沙咀之後（尖沙咀→紅磡 1 站），但會壓縮 Mira Place 時間。</li>
+        <li><b>紅磡 置富都會「置」愛「熊」抱冰屋派對</b> — 至 2027/1/1，與黃埔天地同一區，可一起排。</li>
+        <li><b>九龍塘又一城 Pokémon 30 週年</b>（至 1/3）與 <b>旺角朗豪坊 Hello Kitty</b>（11/28–1/10）— 兩者同在荃灣線沿線，可串成半天，但與現有三天動線不順路，建議另開時段。</li>
+        <li><b>香港迪士尼 A Disney Christmas</b>（11/17–1/3）／<b>海洋公園聖誕 Fest</b>（12/1–1/1）— 各需一整天，不適合硬塞進三日行程。</li>
+        <li><b>九龍灣 MegaBox 聖誕音樂館</b>（11/23–1/3）與 <b>將軍澳 MCP Magic Academy</b>（11/7–1/3）— 兩者都在九龍東，建議另開半天，不適合硬塞進現有三日。</li>
+        <li><b>沙田新城市廣場 星願水晶殿</b>（11/25–1/3，15 萬顆水晶兩層水晶宮）— 東鐵線直達，若要排需犧牲 Day 3 東涌行程。</li>
+        <li><b>荃灣 荃新天地 Joy From The Stars</b>／<b>荃灣廣場 The Coolest Xmas</b> — 兩場同在荃灣，可串成半天；但與灣仔往返約 40 分鐘，較適合加開一天。</li>
+        <li><b>昂坪 360 港味聖誕之旅</b> — 需半天以上（纜車＋市集），建議另開一天或取代 Day 3 部分行程。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    資料來源：本輪以 <b>Facebook／Instagram／Threads</b> 搜尋 2026 年 12/5–7 香港聖誕活動，並以旅發局、商場官方及本地媒體（香港01、UHK 港生活、HKET、Now 新聞、Trip.com 等）交叉核對日期；原有清單來自 Instagram <a href="https://www.instagram.com/p/DfYovj4k0zm/" target="_blank" rel="noopener">@playeahk「11 月好去處」</a>、<a href="https://www.instagram.com/p/DfwoIlZkkNj/" target="_blank" rel="noopener">「香港繽紛冬日巡禮」</a> 及 <a href="https://www.instagram.com/p/DgHoBeymbbs/" target="_blank" rel="noopener">@mamidaily.hk「全港 25 個免費聖誕親子好去處」</a> 貼文 · 日期已逐項核對<br>
+    航班時刻為 HK Express UO131／UO108 表定時間，實際起降以航空公司當日公告為準；部分活動日期以官方公告為準，出發前建議再確認一次開放時間與休館日
+  </div>
+</footer>
+
+<script src="vendor/leaflet.js"></script>
+<script>
+(function(){
+  var DAY_COLORS = {d1:'#E53935', d2:'#1E88E5', d3:'#43A047', hotel:'#8E24AA', airport:'#546E7A', move:'#FB8C00', dead:'#9E9E9E', food:'#8D6E63', gift:'#D81B60'};
+  var DAY_LABELS = {d1:'12/5（六）', d2:'12/6（日）', d3:'12/7（一）', hotel:'住宿', airport:'機場', move:'移動節點', dead:'未排入主線／不在期間', food:'美食（備選）', gift:'伴手禮'};
+
+  var EVENTS = [
+    {n:"香港繽紛冬日巡禮｜中環冬日小鎮", v:"皇后像廣場花園", a:"中環 皇后像廣場花園（南、北廣場）", d:"2026/11/18 – 2027/1/5", day:"d1", lat:22.2819, lng:114.1600, plan:"Day 1 16:00 白天先拍 22 米巨型聖誕樹、12 米蒸汽火車與聖誕市集；19:00 再回來看光影匯演。"},
+    {n:"Santa's Christmas Airways", v:"ifc 商場", a:"中環 國際金融中心商場（ifc mall）", d:"2026/11/20 – 2027/1/1", day:"d1", lat:22.2850, lng:114.1590, plan:"Day 1 15:00 從中環站走過去 3 分鐘，順路第一站；9 米節慶塔＋11 大復古航空打卡場景。"},
+    {n:"Dreaming of Christmas 聖誕夜之夢", v:"太古廣場及星街小區", a:"金鐘 太古廣場及星街小區", d:"2026/11/13 – 2027/1/3", day:"d1", lat:22.2775, lng:114.1645, plan:"Day 1 17:30 童話繪本主題、月光山丘、星空燈飾與童話森林，室內不怕冷，適合傍晚。"},
+    {n:"Festival of Wonders", v:"太古中心", a:"太古 太古中心", d:"2026/11/12 – 2027/1/3", day:"d2", lat:22.2865, lng:114.2160, plan:"Day 2 10:30 奇趣城堡、幻想隧道與聖誕裝置，室內親子型展區，早上人最少。"},
+    {n:"香港繽紛冬日巡禮｜銅鑼灣冬日小鎮", v:"利園區（希慎道一帶）", a:"銅鑼灣 利園區（希慎道一帶）", d:"2026/11/25 – 2027/1/3", day:"d2", lat:22.2783, lng:114.1830, plan:"Day 2 12:30 大廈外牆光雕故事、全長 40 米戶外精靈酒吧，12 月更有聖誕市集同工作坊；中午先逛市集、吃午餐。"},
+    {n:"香港繽紛冬日巡禮｜尖沙咀冬日光影", v:"香港文化中心建築群及海旁", a:"尖沙咀 香港文化中心、鐘樓一帶海濱", d:"2026/11/18 – 2027/1/5", day:"d2", lat:22.2936, lng:114.1700, plan:"Day 2 17:00 文化中心同鐘樓化身《冬日星光音樂會》光影；藝術館披上極光，太空館變身巨型雪花水晶球＋7,000 顆燈球燈海。入夜後效果最佳。"},
+    {n:"Pingu 冰 FUN 小鎮（NOOT NOOT）", v:"LCX（海港城海運大廈）", a:"尖沙咀 海港城海運大廈 LCX", d:"2026/11/19 – 2027/1/3", day:"d2", lat:22.2955, lng:114.1685, plan:"Day 2 18:30 Pingu 冰雪世界＋5 大互動打卡區，室內可順便吃晚餐（海港城餐廳選擇多）。"},
+    {n:"MEWKY 奇幻聖誕裁縫店", v:"iSQUARE 國際廣場", a:"尖沙咀 iSQUARE 國際廣場", d:"2026/11/14 – 2027/1/3", day:"d2", lat:22.2970, lng:114.1720, plan:"Day 2 20:00 5 米高奇幻彩繪＋3 大魔法裁縫打卡區，商場中庭，晚上燈光較好拍。"},
+    {n:"Groovy Christmas Town", v:"Mira Place 1 中庭", a:"尖沙咀 Mira Place 1 中庭", d:"2026/11/10 – 2027/1/3", day:"d2", lat:22.3005, lng:114.1725, plan:"Day 2 20:45 80 年代美式復古場景＋1:1 紅色跑車，暖色調最適合當天收尾照。"},
+    {n:"置地廣塲｜重遊昔日告羅士打酒店", v:"置地廣塲中庭", a:"中環 置地廣塲中庭", d:"2026/11/20 – 2027/1/3", day:"d1", lat:22.2820, lng:114.1585, plan:"Day 1 17:00 多層復古互動裝置、鐘樓燈光音樂匯演、半空復古列車；部分互動區需入場券（11 歲以下免費），一般開放至 19:30。"},
+    {n:"利東街｜北歐聖誕市集", v:"利東街", a:"灣仔 利東街（皇后大道東 200 號）", d:"2026/12/4 – 12/6（僅三天）", day:"d1", lat:22.2755, lng:114.1710, plan:"Day 1 21:30 瑞典／丹麥／芬蘭商會合辦的北歐設計工藝市集；距飯店步行 8 分鐘，回房前順道逛，錯過 12/5 就沒了。"},
+    {n:"2026 白色聖誕市集", v:"太古坊", a:"鰂魚涌 太古坊", d:"2026/12/3 – 12/6（僅四天）", day:"d2", lat:22.2870, lng:114.2110, plan:"Day 2 10:00 戶外白色主題市集，手作與節慶美食攤位；12/5–6 為最後兩天，早上人最少。"},
+    {n:"海港城｜Christmas Togetherness 三層立體火車站", v:"海運大廈露天廣場", a:"尖沙咀 海運大廈露天廣場及地下中庭", d:"2026/11/19 – 2027/1/3", day:"d2", lat:22.2950, lng:114.1680, plan:"Day 2 18:00 全長 40 米三層立體火車站大堂，頂部機動火車定時開出，入口 8 米高聖誕樹＋逾 30 棵聖誕樹。"},
+    {n:"閃爍尖東耀香江 2026｜Party with DJ Santa", v:"尖沙咀中心、帝國中心、麼地道", a:"尖東 尖沙咀中心、帝國中心、麼地道天橋", d:"2026/11/17 – 2027/1/3（每晚 18:00–23:00）", day:"d2", lat:22.2965, lng:114.1785, plan:"Day 2 21:15 AI 光影匯演、麼地道星際燈海與旋轉木馬裝飾；看完沿麼地道走回尖沙咀站。"},
+    {n:"又一城｜Pokémon 30 週年聖誕", v:"又一城", a:"九龍塘 又一城", d:"2026/11 中 – 2027/1/3", day:"dead", lat:22.3370, lng:114.1740, plan:"未排入三日行程（九龍塘）；巨型衝刺 Pikachu、約 10 米精靈球主題燈飾，可作彈性備案。"},
+    {n:"朗豪坊｜Hello Kitty 聖誕", v:"朗豪坊", a:"旺角 朗豪坊", d:"2026/11/28 – 2027/1/10", day:"dead", lat:22.3180, lng:114.1685, plan:"未排入三日行程（旺角）；5 米蝴蝶結聖誕樹＋期間限定店，可作彈性備案。"},
+    {n:"香港迪士尼｜A Disney Christmas 奇妙聖誕", v:"香港迪士尼樂園", a:"大嶼山 香港迪士尼樂園", d:"2026/11/17 – 2027/1/3", day:"dead", lat:22.3130, lng:114.0410, plan:"未排入三日行程（需一整天）；美國小鎮大街冬日佈置、亮燈禮、聖誕巡遊與煙火。"},
+    {n:"海洋公園｜聖誕 Fest", v:"香港海洋公園", a:"南區 香港海洋公園", d:"2026/12/1 – 2027/1/1", day:"dead", lat:22.2360, lng:114.1740, plan:"未排入三日行程（需一整天）；大型聖誕樹、節慶表演與園區聖誕限定活動。"},
+    {n:"MegaBox｜兒童聖誕市集", v:"MegaBox L9", a:"九龍灣 MegaBox L9", d:"2026/12/5、6、12、13、19、20", day:"dead", lat:22.3230, lng:114.2080, plan:"未排入三日行程（九龍灣）；L9 小檔主手作市集 13:00–20:00，可作彈性備案。"},
+    {n:"中港城｜START FROM ZERO 車尾箱聖誕市集", v:"中港城海豚池平台花園", a:"尖沙咀 中港城海豚池平台花園及 2 樓", d:"2026/12/11–13、19–20、24–27", day:"dead", lat:22.2990, lng:114.1670, plan:"12/11 才開始，不在 12/5–7 期間，無法安排。"},
+    {n:"Teddy LuLu 聖誕時光之旅", v:"奧海城 2 期地下中庭", a:"大角咀 奧海城 2 期地下中庭", d:"2026/11/14 – 2027/1/3", day:"dead", lat:22.3175, lng:114.1610, plan:"未排入三日行程（大角咀，與主線不順路）；11/14–1/3 展出中，可作彈性備案。"},
+    {n:"《小王子》玫瑰星空", v:"黃埔天地", a:"紅磡 黃埔天地", d:"2026/11/17 起（至另行公告）", day:"dead", lat:22.3045, lng:114.1890, plan:"未排入三日行程；11/17 起萬朵玫瑰星空步道＋5 米巨型玫瑰，可接在 Day 2 尖沙咀之後（尖沙咀→紅磡 1 站）。"},
+    {n:"「置」愛「熊」抱冰屋派對", v:"置富都會 L7 大堂", a:"紅磡 置富都會 L7 大堂", d:"即日起 – 2027/1/1", day:"dead", lat:22.3030, lng:114.1870, plan:"未排入三日行程；與黃埔天地同一區，可一起排作彈性備案。"},
+    {n:"Pixar 40 週年聖誕奇趣之旅", v:"AIRSIDE 2 樓中庭及露天廣場", a:"啟德 AIRSIDE 2 樓中庭及露天廣場", d:"2026/11/13 – 2027/1/3", day:"dead", lat:22.3300, lng:114.1990, plan:"未排入三日行程（啟德，與主線不順路）；11/13–1/3 展出中，可作彈性備案。"},
+    {n:"麵包超人「冬日星際之旅」", v:"荷里活廣場 1 樓明星廣場", a:"鑽石山 荷里活廣場 1 樓明星廣場", d:"2026/11/13 – 2027/1/3", day:"dead", lat:22.3400, lng:114.2015, plan:"未排入三日行程（鑽石山）；7 米聖誕樹＋6 大主題打卡區，可作彈性備案。"},
+    {n:"聖誕音樂館", v:"MegaBox", a:"九龍灣 MegaBox", d:"2026/11/23 – 2027/1/3", day:"dead", lat:22.3230, lng:114.2080, plan:"未排入三日行程（九龍灣）；歐陸音樂小鎮，建議另開半天。"},
+    {n:"Magic Academy", v:"MCP 新都城中心", a:"將軍澳 MCP 新都城中心", d:"2026/11/7 – 2027/1/3", day:"dead", lat:22.3170, lng:114.2600, plan:"未排入三日行程（將軍澳）；超巨型魔法帽、魔毯、魔法學院場景，建議另開半天。"},
+    {n:"Merry Balloon Parade 氣球巡遊", v:"啟德體育園", a:"啟德 啟德體育園", d:"2026/12/27（單日）", day:"dead", lat:22.3230, lng:114.2010, plan:"僅 12/27 單日，不在 12/5–7 期間，無法安排。"},
+    {n:"SKIPPY 花生烘烤所", v:"東薈城名店倉", a:"東涌 東薈城名店倉", d:"2026/11/20 – 2027/1/3", day:"d3", lat:22.2890, lng:113.9430, plan:"Day 3 10:20 4 米巨型烤爐＋6 大聖誕烘烤打卡位；商場 10:00 開門，剛好第一批進場，人少好拍，行李先寄一樓置物櫃。"},
+    {n:"Rolling Xmas 冰藍樂園", v:"新都會廣場", a:"葵芳 新都會廣場", d:"2026/11/21 – 2027/1/3", day:"dead", lat:22.3570, lng:114.1280, plan:"未排入三日行程（葵芳）；冬日極光藍調＋巨型聖誕主題場景，可作彈性備案。"},
+    {n:"Joy From The Stars 星願聖誕", v:"荃新天地", a:"荃灣 荃新天地", d:"2026/11/20 – 2027/1/3", day:"dead", lat:22.3710, lng:114.1150, plan:"未排入三日行程（荃灣）；12 米巨樹＋巨型 ART-ZOO 角色，可作彈性備案。"},
+    {n:"The Coolest Xmas 零度冰雪樂園", v:"荃灣廣場 L5 空中樂園", a:"荃灣 荃灣廣場 L5 空中樂園", d:"2026/11/21 – 2027/1/3", day:"dead", lat:22.3700, lng:114.1130, plan:"未排入三日行程（荃灣）；戶外玩雪＋6 大冰雪玩樂，可作彈性備案。"},
+    {n:"聖誕快樂研究所", v:"黃金海岸商場", a:"屯門 黃金海岸商場", d:"2026/11/6 – 2027/1/3", day:"dead", lat:22.3700, lng:113.9900, plan:"未排入三日行程（屯門）；海邊聖誕＋5 米快樂聖誕樹，可作彈性備案。"},
+    {n:"Ryan 10 週年聖誕交響樂", v:"元朗廣場", a:"元朗 元朗廣場", d:"2026/11/24 – 2027/1/3", day:"dead", lat:22.4440, lng:114.0290, plan:"未排入三日行程（元朗）；Ryan 聖誕樂園＋Kakao Friends 10 週年派對，可作彈性備案。"},
+    {n:"星願水晶殿", v:"新城市廣場", a:"沙田 新城市廣場", d:"2026/11/25 – 2027/1/3", day:"dead", lat:22.3820, lng:114.1880, plan:"未排入三日行程（沙田）；15 萬顆水晶打造兩層華麗水晶宮，東鐵線直達，可作彈性備案。"},
+    {n:"Ryan 10 週年聖誕派對", v:"大埔超級城", a:"大埔 大埔超級城", d:"2026/11/24 – 2027/1/3", day:"dead", lat:22.4500, lng:114.1680, plan:"未排入三日行程（大埔）；Kakao Friends Ryan＋聖誕場景，可作彈性備案。"},
+    {n:"聖誕「喵」想成真", v:"新港城中心", a:"馬鞍山 新港城中心", d:"2026/11/7 – 2027/1/3", day:"dead", lat:22.4250, lng:114.2320, plan:"未排入三日行程（馬鞍山）；8 米巨型貓貓＋歐陸貓咪小鎮，可作彈性備案。"},
+    {n:"冬日「熊」動全城咖啡屋", v:"馬鞍山廣場 L2 天幕廣場", a:"馬鞍山 馬鞍山廣場 L2 天幕廣場", d:"即日起 – 2027/1/1", day:"dead", lat:22.4240, lng:114.2310, plan:"未排入三日行程（馬鞍山）；7 米高打卡位＋冒煙咖啡機，可作彈性備案。"},
+    {n:"Cover Cat 搶鏡聖誕", v:"名都商場", a:"上水／粉嶺 名都商場", d:"2026/11/20 – 2027/1/3", day:"dead", lat:22.5020, lng:114.1280, plan:"未排入三日行程（上水／粉嶺）；韓國頭套貓＋電影主題聖誕場景，可作彈性備案。"},
+    {n:"昂坪 360 × 黑白® 港味聖誕之旅", v:"昂坪市集", a:"昂坪 昂坪市集", d:"2026/11/3 – 2027/1/10", day:"dead", lat:22.2550, lng:113.9100, plan:"未排入三日行程（昂坪）；6 米高風車＋免費派奶茶，需半天以上（纜車＋市集），建議另開一天。"},
+    {n:"Kiztopia「聖誕築夢小鎮」", v:"YM² 裕民坊 L1 中庭", a:"觀塘 YM² 裕民坊 L1 中庭", d:"2026/11/21 – 2027/1/3", day:"dead", lat:22.3130, lng:114.2250, plan:"未排入三日行程（觀塘）；5 大互動遊樂區，可作彈性備案。"},
+    {n:"芝麻街聖誕糖果小鎮（期間限定店）", v:"時代廣場 B1 地庫", a:"銅鑼灣 時代廣場 B1 地庫", d:"2026/11/6 – 11/26", day:"dead", lat:22.2780, lng:114.1820, plan:"只到 11/26，出發前已結束，已從行程中剔除。"}
+  ];
+
+  var MOVES = [
+    {n:"香港國際機場 T1", a:"赤鱲角 香港國際機場一號客運大樓", day:"airport", lat:22.3080, lng:113.9185, plan:"Day 1 11:50 抵港（UO131）；Day 3 14:00 到機場報到（UO108 16:50 起飛、18:25 抵台中）。"},
+    {n:"I Club Wan Chai Hotel", a:"灣仔 軒尼詩道一帶（近灣仔站／銅鑼灣）", day:"hotel", lat:22.2775, lng:114.1730, plan:"三日行程的出發與回程基地。Day 1 13:50 寄放行李／Check-in；Day 3 09:00 退房。"},
+    {n:"中環站", a:"中環 港島線／荃灣線", day:"move", lat:22.2820, lng:114.1580, plan:"Day 1 港島線 2 站到中環；Day 3 轉東涌線往東涌。"},
+    {n:"金鐘站", a:"金鐘 港島線／荃灣線／南港島線", day:"move", lat:22.2790, lng:114.1650, plan:"Day 1 中環↔金鐘 1 站；Day 2 轉荃灣線往尖沙咀。"},
+    {n:"銅鑼灣站", a:"銅鑼灣 港島線", day:"move", lat:22.2800, lng:114.1850, plan:"Day 2 利園區（希慎道一帶）由此步行前往。"},
+    {n:"太古站", a:"太古 港島線", day:"move", lat:22.2860, lng:114.2160, plan:"Day 2 港島線 5 站到太古，往太古中心。"},
+    {n:"尖沙咀站", a:"尖沙咀 荃灣線", day:"move", lat:22.2975, lng:114.1720, plan:"Day 2 金鐘轉荃灣線 3 站到尖沙咀。"},
+    {n:"尖沙咀天星碼頭", a:"尖沙咀 天星小輪碼頭", day:"move", lat:22.2935, lng:114.1685, plan:"Day 2 回程搭天星小輪往灣仔，約 10 分鐘、HK$4–5，下船步行 8 分鐘回飯店。"},
+    {n:"灣仔碼頭", a:"灣仔 天星小輪碼頭", day:"move", lat:22.2830, lng:114.1720, plan:"Day 2 天星小輪下船處，步行 8 分鐘回 I Club Wan Chai Hotel。"},
+    {n:"東涌站", a:"東涌 東涌線", day:"move", lat:22.2890, lng:113.9420, plan:"Day 3 港島線至中環／香港站轉東涌線直達，全程約 45 分鐘；13:40 前由此出發往機場。"}
+  ];
+
+  /* ---- 港式美食（15 間，含 5 間備選） ---- */
+  var FOOD = [
+    {n:"再興燒臘飯店", v:"灣仔 軒尼詩道265-267號C座地下", a:"灣仔站 A4 出口步行 5 分鐘", d:"09:30–22:00（週日公休）", day:"d1", lat:22.2776, lng:114.1747, plan:"Day 1 午餐 14:10｜燒臘三寶飯。放完行李走路 5 分鐘。"},
+    {n:"泰昌餅家（中環總店）", v:"中環 擺花街35號地下", a:"中環站步行約 8 分鐘", d:"平日 09:30–19:30／週末至 20:00", day:"d1", lat:22.2820, lng:114.1545, plan:"Day 1 下午茶 15:50｜牛油曲奇皮蛋撻。ifc 走過去 8 分鐘。"},
+    {n:"九記牛腩", v:"中環 歌賦街21號地舖", a:"中環站步行約 10 分鐘（上坡）", d:"12:30–22:30（週日公休）", day:"d1", lat:22.2836, lng:114.1533, plan:"Day 1 晚餐 19:45｜上湯牛腩、咖哩牛筋腩。只收現金。"},
+    {n:"聰 C Dessert", v:"灣仔 莊士敦道35-45號利文樓地下1D", a:"灣仔站步行 5 分鐘", d:"營業時間未核實", day:"d1", lat:22.2768, lng:114.1712, plan:"Day 1 宵夜 21:40｜龍眼椰果冰。利東街走回飯店順路。"},
+    {n:"金鳳茶餐廳", v:"灣仔 春園街41號春園大廈地舖", a:"灣仔站 D 出口步行 3 分鐘", d:"07:00–18:45", day:"d2", lat:22.2757, lng:114.1740, plan:"Day 2 早餐 08:00｜無冰凍奶茶＋雞批。開門人最少。"},
+    {n:"何洪記粥麵專家", v:"銅鑼灣 希慎廣場12樓1204-1205號舖", a:"銅鑼灣站 F 出口", d:"11:00–22:00", day:"d2", lat:22.2795, lng:114.1840, plan:"Day 2 午餐 12:50｜米芝蓮一星雲吞麵。逛完利園區上樓即到。"},
+    {n:"佳佳甜品", v:"銅鑼灣 駱克道472號地舖", a:"銅鑼灣站步行 5 分鐘", d:"營業時間未核實", day:"d2", lat:22.2800, lng:114.1830, plan:"Day 2 甜品 14:00｜芝麻糊拼合桃露。飯後一碗。"},
+    {n:"低調高手大街小食", v:"銅鑼灣 信德街1-7號美蘭閣地下A舖", a:"銅鑼灣站步行 3 分鐘", d:"11:00–19:30（週一公休）", day:"d2", lat:22.2810, lng:114.1868, plan:"Day 2 小吃 14:30｜香港最脆雞蛋仔之一，藏在超市裡。"},
+    {n:"蓮香樓（尖沙咀店）", v:"尖沙咀 金巴利道25號長利商業大廈1-2樓", a:"尖沙咀站 B1 出口步行 4 分鐘", d:"24 小時（每日休一小時清潔）", day:"d2", lat:22.2995, lng:114.1730, plan:"Day 2 宵夜 21:30｜推車點心、茶盅沖茶。常需併桌。"},
+    {n:"羅麥記", v:"東涌 東薈城名店倉5樓510號舖", a:"東涌站 C 出口", d:"營業時間未核實", day:"d3", lat:22.2895, lng:113.9425, plan:"Day 3 午餐 12:40｜磚頭焗豬扒飯、黑松露撈公仔麵。"},
+    {n:"華星冰室（灣仔店）", v:"灣仔 克街6號廣生行大廈地下B1", a:"灣仔站 A4 出口步行 6 分鐘", d:"07:00 開，晚上 9–10 點收", day:"food", lat:22.2765, lng:114.1755, plan:"備選｜Day 1 午餐。黑松露炒蛋多士、校長多士。"},
+    {n:"甘牌燒鵝", v:"灣仔 軒尼詩道226號寶華商業中心地舖", a:"灣仔站 A2 出口步行 4 分鐘", d:"11:30–21:30（不接受訂位）", day:"food", lat:22.2770, lng:114.1760, plan:"備選｜Day 1 晚餐。米芝蓮一星燒鵝，尖峰排 30 分鐘以上。"},
+    {n:"龍點心（灣仔店）", v:"灣仔 軒尼詩道216-218號地下A&B舖", a:"灣仔站步行 3 分鐘", d:"07:00–23:30", day:"food", lat:22.2772, lng:114.1765, plan:"備選｜Day 2 午餐。四大龍燒賣、拉絲菠蘿包。"},
+    {n:"媽咪雞蛋仔", v:"灣仔 軒尼詩道130號修頓中心地下D3", a:"灣仔站步行 2 分鐘", d:"營業時間未核實", day:"food", lat:22.2778, lng:114.1725, plan:"備選｜Day 2 小吃。回飯店路上順手買。"},
+    {n:"悅見", v:"東涌 東薈城名店倉", a:"東涌站 C 出口", d:"營業時間與舖號未核實", day:"food", lat:22.2893, lng:113.9430, plan:"備選｜Day 3 午餐。粵菜＋創新點心，親子友善。"}
+  ];
+
+  /* ---- 伴手禮（7 個品牌） ---- */
+  var GIFTS = [
+    {n:"檸檬王", v:"上環 永吉街18號地舖", a:"上環站 E1 出口步行 3 分鐘", d:"10:00–18:00", day:"d3", lat:22.2865, lng:114.1520, plan:"12/7 10:00 開店第一批｜甘草檸檬常一開店就掃光，務必早到。"},
+    {n:"珍妮曲奇 Jenny Bakery", v:"上環 永和街15號地舖", a:"上環站 E2 出口步行 2 分鐘", d:"10:00–19:00（只收現金）", day:"d3", lat:22.2868, lng:114.1512, plan:"12/7 10:15｜就在檸檬王隔壁一條街。上環店人潮比尖沙咀少很多。"},
+    {n:"帝苑餅店 Fine Foods", v:"尖沙咀 麼地道69號帝苑酒店大堂", a:"尖沙咀／尖東站 P2 出口步行 3 分鐘", d:"11:00–20:00", day:"d2", lat:22.2965, lng:114.1755, plan:"12/6 19:00｜蝴蝶酥。海港城走過去 10 分鐘，接 iSQUARE 順路。機場沒有設點。"},
+    {n:"Bakehouse（東涌店）", v:"東涌 東薈城名店倉地下G19號舖", a:"東涌站 C 出口", d:"08:00–21:00", day:"d3", lat:22.2890, lng:113.9420, plan:"12/7 東涌｜酸種蛋撻。市區各店天天排隊，東涌店不用排。"},
+    {n:"曲奇四重奏（機場）", v:"機場 T1 L7 離港層非禁區 7T039（近 G 行段）", a:"報到前、未過安檢", d:"07:00–23:00", day:"d3", lat:22.3082, lng:113.9178, plan:"12/7 14:10｜蝴蝶酥、雜錦曲奇。非禁區，買完再辦登機。"},
+    {n:"奇華餅家（機場禁區）", v:"機場 T1 禁區 7E101／6W533／7T115", a:"過安檢後", d:"07:00–23:00", day:"d3", lat:22.3092, lng:113.9172, plan:"12/7 14:40｜蜂巢蛋卷、熊貓曲奇。禁區內買完直接手提登機。"},
+    {n:"皇玥 Imperial Patisserie", v:"機場 T1 L7 離港層非禁區東大堂 7E101B", a:"報到前、未過安檢", d:"06:00–23:00", day:"d3", lat:22.3088, lng:113.9185, plan:"12/7 14:20｜蝴蝶酥、蜂巢蛋卷。與曲奇四重奏同層，一起逛。"}
+  ];
+
+  var ROUTES = {
+    d1:[[22.3080,113.9185],[22.2775,114.1730],[22.2850,114.1590],[22.2819,114.1600],[22.2820,114.1585],[22.2775,114.1645],[22.2819,114.1600],[22.2775,114.1730],[22.2755,114.1710]],
+    d2:[[22.2775,114.1730],[22.2870,114.2110],[22.2865,114.2160],[22.2783,114.1830],[22.2775,114.1730],[22.2936,114.1700],[22.2950,114.1680],[22.2955,114.1685],[22.2970,114.1720],[22.3005,114.1725],[22.2965,114.1785],[22.2830,114.1720],[22.2775,114.1730]],
+    d3:[[22.2775,114.1730],[22.2890,113.9430],[22.3080,113.9185]]
+  };
+
+  var map = L.map('hkmap', {scrollWheelZoom:false, zoomControl:true}).setView([22.32,114.10], 11);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom:19, subdomains:'abc',
+    attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+
+  var KEYS = ['d1','d2','d3','hotel','airport','move','dead','food','gift'];
+  var layers = {};
+  KEYS.forEach(function(k){ layers[k] = L.layerGroup(); });
+  var visible = {d1:true,d2:true,d3:true,hotel:true,airport:true,move:true,dead:true,food:true,gift:true};
+
+  function icon(txt, color, big){
+    return L.divIcon({
+      className:'map-num'+(big?' big':''),
+      html:'<span style="background:'+color+'">'+txt+'</span>',
+      iconSize: big?[32,32]:[26,26],
+      iconAnchor: big?[16,16]:[13,13],
+      popupAnchor:[0, big?-18:-14]
+    });
+  }
+
+  function popup(day, name, venue, addr, date, plan){
+    var h = '<div class="pp-day" style="background:'+DAY_COLORS[day]+'">'+DAY_LABELS[day]+'</div>';
+    h += '<div class="pp-name">'+name+'</div>';
+    if(venue) h += '<div class="pp-row">📍 <b>'+venue+'</b></div>';
+    if(addr) h += '<div class="pp-row">'+addr+'</div>';
+    if(date) h += '<div class="pp-date">🗓 '+date+'</div>';
+    if(plan) h += '<div class="pp-plan">'+plan+'</div>';
+    return h;
+  }
+
+  var n = 0;
+  EVENTS.forEach(function(e){
+    n++;
+    var m = L.marker([e.lat,e.lng], {icon:icon(String(n), DAY_COLORS[e.day], false)});
+    m.bindPopup(popup(e.day, e.n, e.v, e.a, e.d, e.plan));
+    m.bindTooltip(e.n, {direction:'top', offset:[0,-12]});
+    layers[e.day].addLayer(m);
+  });
+
+  MOVES.forEach(function(e){
+    var sym = e.day==='hotel' ? '宿' : (e.day==='airport' ? '✈' : '•');
+    var m = L.marker([e.lat,e.lng], {icon:icon(sym, DAY_COLORS[e.day], true)});
+    m.bindPopup(popup(e.day, e.n, null, e.a, null, e.plan));
+    m.bindTooltip(e.n, {direction:'top', offset:[0,-16]});
+    layers[e.day].addLayer(m);
+  });
+
+  /* 美食：圓形小標記，🍜 */
+  FOOD.forEach(function(e){
+    var m = L.marker([e.lat,e.lng], {icon:icon('🍜', DAY_COLORS.food, false)});
+    var h = '<div class="pp-day" style="background:'+DAY_COLORS.food+'">港式美食</div>';
+    h += '<div class="pp-name">'+e.n+'</div>';
+    h += '<div class="pp-row">📍 <b>'+e.v+'</b></div>';
+    h += '<div class="pp-row">'+e.a+'</div>';
+    h += '<div class="pp-date">🕒 '+e.d+'</div>';
+    h += '<div class="pp-plan">'+e.plan+'</div>';
+    m.bindPopup(h);
+    m.bindTooltip(e.n, {direction:'top', offset:[0,-12]});
+    layers.food.addLayer(m);
+  });
+
+  /* 伴手禮：方形標記，🎁 */
+  GIFTS.forEach(function(e){
+    var m = L.marker([e.lat,e.lng], {icon:icon('🎁', DAY_COLORS.gift, false)});
+    var h = '<div class="pp-day" style="background:'+DAY_COLORS.gift+'">伴手禮</div>';
+    h += '<div class="pp-name">'+e.n+'</div>';
+    h += '<div class="pp-row">📍 <b>'+e.v+'</b></div>';
+    h += '<div class="pp-row">'+e.a+'</div>';
+    h += '<div class="pp-date">🕒 '+e.d+'</div>';
+    h += '<div class="pp-plan">'+e.plan+'</div>';
+    m.bindPopup(h);
+    m.bindTooltip(e.n, {direction:'top', offset:[0,-12]});
+    layers.gift.addLayer(m);
+  });
+
+  var routeLines = {};
+  Object.keys(ROUTES).forEach(function(k){
+    routeLines[k] = L.polyline(ROUTES[k], {color:DAY_COLORS[k], weight:3, opacity:.65, dashArray:'7 8'}).addTo(map);
+  });
+
+  var legendDefs = [
+    {k:'d1', label:'12/5（六）'},
+    {k:'d2', label:'12/6（日）'},
+    {k:'d3', label:'12/7（一）'},
+    {k:'hotel', label:'住宿'},
+    {k:'airport', label:'機場'},
+    {k:'move', label:'移動節點'},
+    {k:'food', label:'港式美食'},
+    {k:'gift', label:'伴手禮'},
+    {k:'dead', label:'未排入主線／不在期間'}
+  ];
+  var legendEl = document.getElementById('mapLegend');
+  legendDefs.forEach(function(d){
+    var cnt = layers[d.k].getLayers().length;
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'lg-btn';
+    btn.innerHTML = '<span class="lg-dot" style="background:'+DAY_COLORS[d.k]+'"></span>'+d.label+' <span class="lg-n">'+cnt+'</span>';
+    btn.addEventListener('click', function(){
+      visible[d.k] = !visible[d.k];
+      if(visible[d.k]){
+        map.addLayer(layers[d.k]); btn.classList.remove('off');
+        if(routeLines[d.k]) routeLines[d.k].addTo(map);
+      } else {
+        map.removeLayer(layers[d.k]); btn.classList.add('off');
+        if(routeLines[d.k]) map.removeLayer(routeLines[d.k]);
+      }
+    });
+    legendEl.appendChild(btn);
+  });
+
+  KEYS.forEach(function(k){ layers[k].addTo(map); });
+
+  var pts = [];
+  KEYS.forEach(function(k){ layers[k].eachLayer(function(l){ pts.push(l.getLatLng()); }); });
+  if(pts.length){ map.fitBounds(L.latLngBounds(pts).pad(0.12)); }
+})();
+</script>
+</body>
+</html>
